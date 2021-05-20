@@ -1,0 +1,189 @@
+{% extends 'main/base.html'%}
+{% load static %}
+{% block title%} University Admin {%endblock%}
+{% block content%}
+<style>
+
+</style>
+<div class="container">
+    <h1 class="text-center alert alert-primary">University description</h1>
+  
+
+        <form  method="POST" enctype="multipart/form-data" >
+            {%csrf_token%}
+            <div class="row" >
+        <div class="col-sm-4" style="margin: auto;">
+        <input type="hidden" value="" id="studentid"/>
+        <p>Name :{{form.name}}</p>
+        <p>
+          Email :{{form.email}}
+      </p>
+         <p>  Date de naissance:{{form.date_naissance}}</p>
+       <p>Telephone:{{form.telephone}}</p>
+         <p>Ville:{{form.ville}}</p>
+        <p> Nom du pere:{{form.name_pere}}</p>
+      <p> Nom du mere:{{form.name_mere}}</p>
+        </div>
+        <div class="col-sm-4" style="margin: auto;">
+            <p>
+                Designation :{{form.designation}}
+            </p>
+            <p>Institution :{{form.institution}}</p>
+             <p>  Filliere:{{form.fillier}}</p>
+           <p>Batch:{{form.batch}}</p>
+             <p>Address:{{form.address}}</p>
+            <p> Telephone du pere:{{form.telephone_pere}}</p>
+          <p> Telephone du mere:{{form.telephone_mere}}</p>
+            </div>
+        </div>
+       
+    </div>
+   
+    </form>
+     <button class="btn btn-primary" id="save" style="width:20%; margin-left: 160px;">SAVE</button>  
+    <button class="btn btn-warning" id="update" style="width:20%; margin-left: 160px;">UPDATE</button>  
+    <div class="search">
+      <table class="table">
+         <td style="border: none;"> <input class="form-control" value="" id="searchname" type='text' 
+          placeholder="Enter name only ..."/></td>
+         <td style="border: none;"> <input class="form-control bg-success" value="SEARCH" id="searchnamebtn" type='button'/></td>
+      </table>
+    </div>
+</div>
+<div class="container" style="overflow-x: scroll;">
+<table class="table table-hover">
+  <thead>
+    <th>Delete</th>
+    <th>Update</th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Date de naissance</th>
+    <th>Telephone</th>
+    <th> Ville</th>
+    <th>Nom du pere</th>
+    <th>Nom du mere</th>
+    <th>Designation</th>
+    <th>Institution</th>
+    <th>Filliere</th>
+    <th>Batch</th>
+    <th>Address</th>
+    <th>Telephone du pere</th>
+    <th>Telephone du mere</th>
+   
+  </thead>
+  <tbody id="tbody">
+    {% for item in ls%}
+    <tr>
+      
+      <td>
+        <input type="button" id="edit" name="edit" value="EDIT" data-sid={{item.id}} class="btn btn-warning"/>
+       </td>
+       <td>
+         <input type="button" id="delete" name="delete" value="DELETE" data-sid={{item.id}} class="btn btn-danger"/>
+      </td>
+      <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.date_naissance}}</td>
+        <td>{{item.telephone}}</td>
+
+        <td>{{item.ville}}</td>
+        <td>{{item.name_pere}}</td>
+        <td>{{item.name_mere}}</td>
+        <td>{{item.designation}}</td>
+
+        <td>{{item.institution}}</td>
+        <td>{{item.fillier}}</td>
+        <td>{{item.batch}}</td>
+        <td>{{item.address}}</td>
+
+        <td>{{item.telephone_pere}}</td>
+        <td>{{item.telephone_mere}}</td>
+   
+        </tr>
+    {%endfor%}
+  </tbody>
+</table>
+<h1 class="text-center alert alert-primary ">University Notes</h1>
+
+<div class="search">
+  <table class="table">
+     <td style="border: none;"> <input class="form-control" value="" id="searchid" type='text' 
+      placeholder="Enter ID only ..."/></td>
+     <td style="border: none;"> <input class="form-control bg-success" value="SEARCH" id="searchidbtn" type='button'/></td>
+  </table>
+</div>
+
+
+<div class="row">
+<div class="col-sm-3">
+  <form method="post">
+    {%csrf_token%}
+    <input type="hidden" value="" id="idhidden"/>
+    {{formnotes.as_p}}
+    </form>
+    
+    <button class="btn btn-primary" id="savenotes" style="width:40%; margin-left: 20px;">SAVE</button>
+    <button class="btn btn-warning" id="updatenotes" style="width:40%; margin-left: 20px;">UPDATES</button>
+  </div>
+    <div class="col-sm-4">
+    <table class="table table-hover">
+           <thead>
+             
+             <th>University_Id</th>
+             <th>year</th>
+             <th>Semester</th>
+             <th>Matiere</th>
+             <th>notes</th>
+             <th>Characteristic</th>
+             <th>Moyen</th>
+             <th>Update</th>
+            <th>Delete</th>
+           </thead>
+           <tbody id="tbodynotes">
+            {% for n in noteslist %}
+            <td>{{n.university_id}}</td>
+            <td>{{n.year}}</td>
+            <td>{{n.sem}}</td>
+            <td>{{n.matiere}}</td>
+            <td>{{n.notes}}</td>
+            <td>{{n.characteristic}}</td>
+            <td>{{n.moyen}}</td>
+            <td>
+              <input type="button" id="editnotes" name="edit" value="EDIT" data-sid={{n.id}} class="btn btn-warning"/>
+             </td>
+             <td>
+               <input type="button" id="deletenotes" name="delete" value="DELETE" data-sid={{n.id}} class="btn btn-danger"/>
+            </td>
+          </tr>
+            {% endfor %}
+           </tbody>
+    </table>
+    </div>
+  
+</div>
+</div>
+
+ 
+</div>
+
+
+
+ 
+<script>
+    var elem=document.getElementsByTagName('input')
+    for (e in elem){
+      elem[e].classList.add('form-control');
+   }
+   var el=document.getElementById("id_date_naissance");
+   el.setAttribute("type","date");
+    
+  var design=document.getElementById('id_designation');
+  design.addEventListener("select", myFunction);
+  function myFunction(){
+    console.log("design.value");
+  }
+  
+</script>
+{%endblock%}

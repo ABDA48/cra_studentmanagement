@@ -1,0 +1,78 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/all.css'%}">
+    <script src="{% static 'js/jquerry.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"  ></script>
+    <title>Sing in</title>
+</head>
+<body class="bg-dark">
+    
+    <div class="container">
+        <div class="col-sm-4 card" style="margin: auto;margin-top: 50px;">
+    <form action="" method="POST">
+        {% csrf_token %}
+   
+        <h1 class="text-center text-primary">Register Account</h1>
+
+        <div class="form-group ">
+            <table class="table">
+                <tr>
+                 <td class="text-center" style="border: none"><i class="fas  fa-2x fa-user" ></i> </td>
+                 <td style="border: none;">{{form.username}} </td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="border: none"><i class="fas fa-2x  fa-envelope"></i></td>
+                    <td style="border: none;">{{form.email}} </td>
+                   </tr>
+                <tr>
+                 <td class="text-center" style="border: none"><i class="fas fa-2x  fa-lock"></i></td>
+                 <td style="border: none;">{{form.password1}} </td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="border: none"><i class="fas fa-2x  fa-lock"></i></td>
+                    <td style="border: none;">{{form.password2}} </td>
+                   </tr>
+                <tr>
+                    <td colspan="2" style="border: none;"><button class="btn btn-primary" style="margin-top: 10px;margin-left: 100px;">
+                        REGISTER
+                    </button> </td>
+                </tr>
+               
+            </table>
+            {{form.errors}}
+         </div>
+
+     
+        
+        
+        {%for m in messages%}
+        <p class="text-center  alert alert-danger">
+            {{m}}
+        </p>
+        {%endfor%}
+        
+        <p class="text-center">
+           Already have an account <a href="{%url 'login'%}">log in</a>
+        </p>
+    </form>
+    <script>
+        var pass=document.getElementById("id_password1");
+        pass.classList.add('form-control');
+        
+        var pass2=document.getElementById("id_password2");
+        pass2.classList.add('form-control');
+        $('#id_password1').attr('placeholder','Password');
+        $('#id_password2').attr('placeholder','Password Confirmation');
+    </script>
+
+</div>
+</div>
+ 
+</body>
+</html>

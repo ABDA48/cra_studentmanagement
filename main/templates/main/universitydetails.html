@@ -1,0 +1,439 @@
+{% extends 'main/base.html'%}
+{% load static %}
+{% block content%}
+
+{%for st in ls%}
+<style>
+    ._card{
+        height: 200px;
+       width:20%;
+       margin: auto;
+    }
+    .title_section{
+        width:20%;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+</style>
+<input type="hidden" id="id_details" value="{{st.id}}"/>
+<div class="_card">
+    <img class="images"src="{{st.imageprofile.url}}" alt="" width="100%" height="100%">
+    <p class="text-center text-primary">
+        {{st.name}}
+    </p>
+</div>
+<a href="{% url 'resume' id=st.id %}">Resume</a>
+<div class="title_section alert alert-danger text-center">
+    About
+</div>
+<div class="card">
+<div class="row">
+    <div class="col-sm-3 ">
+     <div class="details">
+       
+        <button class=" btn element alert   btn-primary text-center" id="education">
+            Education
+        </button>
+        <br>
+        <button class=" btn element alert  btn-default text-center" id="familly">
+            Familly
+        </button>
+        <br>
+        <button class="btn element alert btn-default text-center" id='origine'>
+            Origine&Contacts
+        </button>
+        
+     </div>
+    </div>
+    <div class="col-sm-9 ">
+    <div class="for_details">
+   
+    <table class="table table-hover" style="margin: 20px;" >
+     <tr >
+         <td style="border: none;" class=" text-primary">University Name :</td>
+         <td style="border: none;" >{{st.institution}}</td>
+     </tr>
+     <tr>
+        <td style="border: none;" class=" text-primary">Filliere :</td>
+        <td style="border: none;">{{st.fillier}}</td>
+    </tr>
+    <tr>
+        <td style="border: none;" class=" text-primary">Grades :</td>
+        <td style="border: none;">{{st.batch}}</td>
+    </tr>
+    </table>
+    </div>
+    </div>
+</div>
+</div>
+
+
+<div class="main">
+    <div class="title_section alert alert-danger text-center" style="margin-top:10px;">
+        Notes Academics
+    </div>
+<div class="row">
+<div class="col-sm-2 text-center">
+    <button class="btn elem btn-primary " id="2021">2021</button>
+
+</div>
+<div class="col-sm-2 text-center">
+    <button class="btn elem btn-default " id="2022">2022</button>
+ </div>
+    <div class="col-sm-2 text-center">
+        <button class="btn elem btn-default  "id="2023" >2023</button>
+ </div>
+        <div class="col-sm-2 text-center">
+            <button class="btn elem  btn-default  " id="2024">2024</button>
+     </div>
+     <div class="col-sm-2 text-center">
+        <button class="btn elem btn-default  " id="2025">2025</button>
+ </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-6">
+   <h4 class="text-center bg-primary card " style="margin: 20px; color: white;">SEMESTER 1</h4>
+   <div class="sem" id="sem1">
+       <div class="row">
+    <div class="col-sm-6">
+ <table class="table">
+<thead>
+    <th class="text-center">Matiere</th>
+</thead>
+<tbody id="tbn1">
+    {% if n %}
+    
+        {%for i in m.matiere1%}
+        <tr>
+            <td style="border: none;" class="text-center">{{i}}</td>
+        </tr>
+        {%endfor%}
+        {% if m.msem1 %}
+        <td style="border: none;" class="text-center alert alert-primary">Moyen</td>
+        {%endif%}
+ {%endif%}
+</tbody>
+ </table>
+   </div>
+   <div class="col-sm-6">
+    <table class="table">
+   <thead>
+       <th class="text-center">Notes</th>
+   </thead>
+   <tbody id="tbn1">
+       {% if n %}
+       
+           {%for i in m.notes1%}
+           <tr>
+               <td style="border: none;" class="text-center">{{i}}</td>
+           </tr>
+           {%endfor%}
+           {%if m.msem1%}
+           <td style="border: none;" class="text-center alert alert-primary">{{m.msem1}}</td>
+           {%endif%}
+          
+    {%endif%}
+   </tbody>
+    </table>
+      </div>
+    </div>
+   </div>
+   </div>
+   <div class="col-sm-6">
+    <h4 class="text-center bg-primary  card" style="margin: 20px; color: white;">SEMESTER 2</h4>
+    <div class="sem" id="sem2">
+        <div class="row">
+     <div class="col-sm-6">
+  <table class="table">
+ <thead>
+     <th class="text-center">Matiere</th>
+ </thead>
+ <tbody id="tbn1">
+     {% if n %}
+     
+         {%for i in m.matiere2%}
+         <tr>
+             <td style="border: none;" class="text-center">{{i}}</td>
+         </tr>
+         {%endfor%}
+         {%if m.msem2 %}
+         <td style="border: none;" class="text-center alert alert-primary">Moyen</td>
+         {%endif%}
+  {%endif%}
+ </tbody>
+  </table>
+    </div>
+    <div class="col-sm-6">
+     <table class="table">
+    <thead>
+        <th class="text-center">Notes</th>
+    </thead>
+    <tbody id="tbn1">
+        {% if n %}
+        
+            {%for i in m.notes2%}
+            <tr>
+                <td style="border: none;" class="text-center">{{i}}</td>
+            </tr>
+            {%endfor%}
+            {%if m.msem2 %}
+            <td style="border: none;" class="text-center alert alert-primary">{{m.msem2}}</td>
+            {%endif%}
+     {%endif%}
+    </tbody>
+     </table>
+       </div>
+     </div>
+    </div>
+   </div>
+</div>
+
+<div class="title_section alert alert-danger text-center" style="margin-top:10px;">
+    Notes Dines
+</div>
+<div class="row">
+<div class="col-sm-2 text-center">
+<button class="btn elem2 btn-primary " id="2021A">2021</button>
+
+</div>
+<div class="col-sm-2 text-center">
+<button class="btn elem2 btn-default " id="2022A">2022</button>
+</div>
+<div class="col-sm-2 text-center">
+    <button class="btn elem2 btn-default  "id="2023A" >2023</button>
+</div>
+    <div class="col-sm-2 text-center">
+        <button class="btn elem2  btn-default  " id="2024A">2024</button>
+ </div>
+ <div class="col-sm-2 text-center">
+    <button class="btn elem2 btn-default  " id="2025A">2025</button>
+</div>
+
+</div>
+<div class="row">
+<div class="col-sm-6">
+<h4 class="text-center bg-primary card " style="margin: 20px; color: white;">SEMESTER 1</h4>
+<div class="sem" id="sem1A">
+   <div class="row">
+<div class="col-sm-6">
+<table class="table">
+<thead>
+<th class="text-center">Matiere</th>
+</thead>
+<tbody id="tbn1">
+{% if n2 %}
+
+    {%for i in m2.matiere1%}
+    <tr>
+        <td style="border: none;" class="text-center">{{i}}</td>
+    </tr>
+    {%endfor%}
+    {% if m2.msem1 %}
+        <td style="border: none;" class="text-center alert alert-primary">Moyen</td>
+        {%endif%}
+{%endif%}
+</tbody>
+</table>
+</div>
+<div class="col-sm-6">
+<table class="table">
+<thead>
+   <th class="text-center">Notes</th>
+</thead>
+<tbody id="tbn1">
+   {% if n2 %}
+   
+       {%for i in m2.notes1%}
+       <tr>
+           <td style="border: none;" class="text-center">{{i}}</td>
+       </tr>
+       {%endfor%}
+       {% if m2.msem1 %}
+       <td style="border: none;" class="text-center alert alert-primary">{{m2.msem1}}</td>
+       {%endif%}
+{%endif%}
+</tbody>
+</table>
+  </div>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<h4 class="text-center bg-primary  card" style="margin: 20px; color: white;">SEMESTER 2</h4>
+<div class="sem" id="sem2A">
+    <div class="row">
+ <div class="col-sm-6">
+<table class="table">
+<thead>
+ <th class="text-center">Matiere</th>
+</thead>
+<tbody id="tbn1">
+ {% if n2 %}
+ 
+     {%for i in m2.matiere2%}
+     <tr>
+         <td style="border: none;" class="text-center">{{i}}</td>
+     </tr>
+     {%endfor%}
+     {% if m2.msem2 %}
+     <td style="border: none;" class="text-center alert alert-primary">Moyen</td>
+     {%endif%}
+{%endif%}
+</tbody>
+</table>
+</div>
+<div class="col-sm-6">
+ <table class="table">
+<thead>
+    <th class="text-center">Notes</th>
+</thead>
+<tbody id="tbn1">
+    {% if n2 %}
+    
+        {%for i in m2.notes2%}
+        <tr>
+            <td style="border: none;" class="text-center">{{i}}</td>
+        </tr>
+        {%endfor%}
+        {% if m2.msem2 %}
+        <td style="border: none;" class="text-center alert alert-primary">{{m2.msem2}}</td>
+        {%endif%}
+ {%endif%}
+</tbody>
+ </table>
+   </div>
+ </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    ///Education-famille-origine
+    var elem=document.getElementsByClassName('element');
+      elem[0].addEventListener('click',function(){
+        elem[1].classList.remove('btn-primary');
+        elem[2].classList.remove('btn-primary');
+        elem[0].classList.add('btn-primary');
+        console.log('ok');
+      })
+      elem[1].addEventListener('click',function(){
+        elem[2].classList.remove('btn-primary');
+        elem[0].classList.remove('btn-primary');
+        elem[1].classList.add('btn-primary');
+      })
+      elem[2].addEventListener('click',function(){
+        elem[0].classList.remove('btn-primary');
+        elem[1].classList.remove('btn-primary');
+        elem[2].classList.add('btn-primary');
+      }) 
+
+ ///2021-2022-......
+      var elemn=document.getElementsByClassName('elem');
+      elemn[0].addEventListener('click',function(){
+        elemn[1].classList.remove('btn-primary');
+        elemn[2].classList.remove('btn-primary');
+        elemn[3].classList.remove('btn-primary');
+        elemn[4].classList.remove('btn-primary');
+        elemn[0].classList.add('btn-primary');
+        
+      })
+      elemn[1].addEventListener('click',function(){
+        elemn[2].classList.remove('btn-primary');
+        elemn[3].classList.remove('btn-primary');
+        elemn[4].classList.remove('btn-primary');
+        elemn[0].classList.remove('btn-primary');
+        elemn[1].classList.add('btn-primary');
+        
+      })
+      elemn[2].addEventListener('click',function(){
+        elemn[1].classList.remove('btn-primary');
+        elemn[3].classList.remove('btn-primary');
+        elemn[4].classList.remove('btn-primary');
+        elemn[0].classList.remove('btn-primary');
+        elemn[2].classList.add('btn-primary');
+        
+      })
+      elemn[3].addEventListener('click',function(){
+        elemn[2].classList.remove('btn-primary');
+        elemn[1].classList.remove('btn-primary');
+        elemn[4].classList.remove('btn-primary');
+        elemn[0].classList.remove('btn-primary');
+        elemn[3].classList.add('btn-primary');
+        
+      })
+      elemn[4].addEventListener('click',function(){
+        elemn[2].classList.remove('btn-primary');
+        elemn[3].classList.remove('btn-primary');
+        elemn[1].classList.remove('btn-primary');
+        elemn[0].classList.remove('btn-primary');
+        elemn[4].classList.add('btn-primary');
+      })
+
+///2021-2022-......
+var elem2=document.getElementsByClassName('elem2');
+elem2[0].addEventListener('click',function(){
+    elem2[1].classList.remove('btn-primary');
+    elem2[2].classList.remove('btn-primary');
+    elem2[3].classList.remove('btn-primary');
+    elem2[4].classList.remove('btn-primary');
+    elem2[0].classList.add('btn-primary');
+        
+      })
+      elem2[1].addEventListener('click',function(){
+        elem2[2].classList.remove('btn-primary');
+        elem2[3].classList.remove('btn-primary');
+        elem2[4].classList.remove('btn-primary');
+        elem2[0].classList.remove('btn-primary');
+        elem2[1].classList.add('btn-primary');
+        
+      })
+      elem2[2].addEventListener('click',function(){
+        elem2[1].classList.remove('btn-primary');
+        elem2[3].classList.remove('btn-primary');
+        elem2[4].classList.remove('btn-primary');
+        elem2[0].classList.remove('btn-primary');
+        elem2[2].classList.add('btn-primary');
+        
+      })
+      elem2[3].addEventListener('click',function(){
+        elem2[2].classList.remove('btn-primary');
+        elem2[1].classList.remove('btn-primary');
+        elem2[4].classList.remove('btn-primary');
+        elem2[0].classList.remove('btn-primary');
+        elem2[3].classList.add('btn-primary');
+        
+      })
+      elem2[4].addEventListener('click',function(){
+        elem2[2].classList.remove('btn-primary');
+        elem2[3].classList.remove('btn-primary');
+        elem2[1].classList.remove('btn-primary');
+        elem2[0].classList.remove('btn-primary');
+        elem2[4].classList.add('btn-primary');
+      })      
+               
+</script>
+{%endfor%}
+
+{%endblock%}  

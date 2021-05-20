@@ -1,0 +1,83 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/all.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+    <script src="{% static 'js/jquerry.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"  ></script>
+ 
+   </head>
+<body class="bg-dark">
+    <div class="card" style="width: 80%; margin: auto; margin-top: 50px;padding: 30px;">
+    <div class="row" >
+        <div class="col-sm-6" >
+            <h3 class="text-center text-primary " style="padding: 10px;">CRA Students Management System</h3>
+            <p class="text-center text-dark" >
+                This plateform is build to manage the CRA Students in witch you can find  all student's informations and 
+                notes but some of the pages are restricted to a specific user so contact the Admin if you want more explainations
+            </p>
+            <h6 class="text-primary text-center">Admin Contacts</h6>
+            <div class="row" style="margin:auto">
+                   <div class="col-sm-4 text-center " >
+                    <i class="fab fa-2x fa-facebook-f" style="color: #007bff;;"></i>
+                    <br>
+                    Jaolaza Abdallah
+                   </div>
+                   <div class="col-sm-4 text-center" >
+                    <i class="fas fa-2x fa-phone-volume "  style="color: #007bff;;"></i>
+                    <br>
+                    +91 9978238678
+                   </div>
+                   <div class="col-sm-4 text-center">
+                    <i class="fas fa-2x fa-envelope "  style="color: #007bff;;"></i>
+                    <br>
+                    jao.lazabdallah83@gmail.com
+                   </div>
+            </div>
+        </div>
+        <div class="col-sm-6" style="box-shadow:  1px 1px 10px -3px #007bff;">
+            <h1 class="text-center text-primary " style="padding: 10px;">Login</h1>
+            <form action="" method="POST">
+                {%csrf_token%}
+                
+                
+                <div class="form-group">
+                   <table class="table ">
+                       <tr>
+                        <td class="text-center" style="border: none"><i class="fas  fa-2x fa-user" ></i> </td>
+                        <td style="border: none;">{{form.username}} </td>
+                       </tr>
+                       <tr>
+                        <td class="text-center" style="border: none"><i class="fas fa-2x  fa-lock"></i></td>
+                        <td style="border: none;">{{form.password}} </td>
+                       </tr>
+                       <tr>
+                           <td colspan="2" style="border: none;"><button class="btn btn-primary" style="margin-left: 200px;" name="submit"> SUBMIT</button> </td>
+                       </tr>
+                      
+                   </table>
+                </div>
+                </form>
+                <p class="text-center">
+                    Don't have account <a href="{%url 'singin'%}">sing up</a>
+                </p>
+                <ul>
+                {%for m in messages%}
+                <li class="text-center alert alert-danger">{{m}}</li>
+                {%endfor%}
+            </ul>
+                
+        </div>
+       
+    </div>
+</div>
+</body> 
+
+

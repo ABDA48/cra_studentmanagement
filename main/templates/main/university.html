@@ -1,0 +1,54 @@
+{% extends 'main/base.html'%}
+{% load static  %}
+{% block title%} University  {%endblock%}
+
+
+    {% block content%}
+    
+    <style>
+        .card{
+        height: 270px;
+        margin-top: 20px;
+        margin: 30px;
+        width: 100px;
+        box-shadow:  1px 1px 10px -3px #007bff;
+           }
+        .card:hover{
+        transform: scale(1.1);
+        }
+        .img{
+            width:100%;
+            height:50%;
+        }
+        .images{
+            width:100%;
+            height:100%;
+        }
+        .tag-link{
+            margin:auto;
+        }
+        
+       </style>
+    <div class="row">
+        {% for item in ls %}
+        
+        <div class="col-sm-2 card">
+            <div class="img">
+           <img class="images"src="{{item.imageprofile.url}}" alt="" >
+        </div> 
+           <p class="text-center " style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+            <span class="text-primary" style="font-family: 'Open Sans', sans-serif;font-weight:bold;">{{item.name}}</span><br>
+            
+                {{item.batch}} en <span class="text-warning">{{item.fillier}}</span></p>
+                <a  class='tag-link'href="{%url 'universitydetail' id=item.id%}"> <button class="btn btn-primary ">View detail</button></a>
+           </div>
+            
+       
+        {%endfor%}
+
+    
+       </div>
+    </div>
+    </div>
+    {%endblock%}   
+       

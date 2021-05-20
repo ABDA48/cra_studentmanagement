@@ -1,0 +1,158 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <script src="{% static 'js/jquerry.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"  ></script>
+   <script src="{%static 'popper.js'%}" ></script>
+   <script src="{%static 'script.js'%}" ></script>
+    
+</head>
+<body>
+<h3 class="text-dark  text-center"> Resume Student </h3>
+<div class="container">
+<table class="table table-striped table-dark">
+    {%for item in ls%}
+<tr >
+    <td>Name:</td>
+    <td>{{item.name}}</td>
+    <td rowspan="2">
+        <img src="{{item.imageprofile.url}}" alt="" width="150px" height="150px">
+    </td>
+</tr>
+<tr>
+    <td>Date de naissance:</td>
+    <td>{{item.date_naissance}}</td>
+</tr>
+<tr>
+    <td>Parents</td>
+    <td>Pere: {{item.name_pere}}</td>
+    <td>Mere: {{item.name_mere}}</td>
+</tr>
+<tr>
+    <td>Telephone</td>
+    <td>Pere: {{item.telephone_pere}}</td>
+    <td>Mere: {{item.telephone_mere}}</td>
+</tr>
+<tr>
+    <td>Ville d'Origine</td>
+    <td>{{item.ville}}</td>
+    <td>{{item.address}}</td>
+</tr>
+<tr>
+    <td>Designation</td>
+    <td colspan="2">{{item.designation}}</td>
+</tr>
+
+<tr>
+    <td>Institution</td>
+    <td colspan="2">{{item.institution}}</td>
+</tr>
+
+<tr>
+    <td>Batch</td>
+    <td colspan="2">{{item.batch}}</td>
+</tr>
+{%endfor%}
+</table>
+
+ <div class="row">
+     
+     <div class="col-sm-6">
+        <h4 class="text-center text-dark">Academic</h3>
+<table class="table table-striped table-dark">
+<thead>
+    <th>Year</th>
+    <th>Semester 1</th>
+    <th>Semester 2</th>
+    <th>Semester 3</th>
+</thead>
+<tbody>
+    
+    <tr>
+        <td>2021</td>
+        {%for a in ns1_2021A%}
+        <td>{{a.moyen}}</td>
+        {%endfor%}
+    </tr>
+    <tr>
+        <td>2022</td>
+        {%for a in ns1_2022A%}
+        <td>{{a.moyen}}</td>
+        {%endfor%}
+        </tr>
+        <tr>
+        <td>2023</td>
+        {%for a in ns1_2023A%}
+        <td>{{a.moyen}}</td>
+        {%endfor%}
+        </tr>
+        <tr>
+            <td>2024</td>
+            {%for a in ns1_2024A%}
+            <td>{{a.moyen}}</td>
+            {%endfor%}
+            </tr>
+            <tr>
+                <td>2025</td>
+                {%for a in ns1_2025A%}
+                <td>{{a.moyen}}</td>
+                {%endfor%}
+                </tr>
+</tbody>
+</table>
+</div>
+
+<div class="col-sm-6">
+    <h4 class="text-center text-dark">Dine</h3>
+<table class="table table-striped table-dark">
+<thead>
+<th>Year</th>
+<th>Semester 1</th>
+<th>Semester 2</th>
+<th>Semester 3</th>
+</thead>
+<tbody>
+
+<tr>
+    <td>2021</td>
+    {%for a in ns1_2021D%}
+    <td>{{a.moyen}}</td>
+    {%endfor%}
+</tr>
+<tr>
+    <td>2022</td>
+    {%for a in ns1_2022D%}
+    <td>{{a.moyen}}</td>
+    {%endfor%}
+    </tr>
+    <tr>
+    <td>2023</td>
+    {%for a in ns1_2023D%}
+    <td>{{a.moyen}}</td>
+    {%endfor%}
+    </tr>
+    <tr>
+        <td>2024</td>
+        {%for a in ns1_2024D%}
+        <td>{{a.moyen}}</td>
+        {%endfor%}
+        </tr>
+        <tr>
+            <td>2025</td>
+            {%for a in ns1_2025D%}
+            <td>{{a.moyen}}</td>
+            {%endfor%}
+            </tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>

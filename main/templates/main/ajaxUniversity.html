@@ -1,0 +1,1028 @@
+<script>
+    $(document).ready(function(){
+        var csrf=$("input[name=csrfmiddlewaretoken]").val(); 
+        $("#save").click(function(){
+      var name=$("#id_name").val();
+      var email=$("#email").val();
+      var date_naissance=$("#id_date_naissance").val();
+      var telephone=$("#id_telephone").val();
+      var ville=$("#id_ville").val();
+      var name_pere=$("#id_name_pere").val();
+      var name_mere=$("#id_name_mere").val();
+      var designation=$("#id_designation").val();
+      var institution=$("#id_institution").val();
+      var fillier=$("#id_fillier").val();
+      var batch=$("#id_batch").val();
+      var address=$("#id_address").val();
+      var telephone_pere=$("#id_telephone_pere").val();
+      var telephone_mere=$("#id_telephone_pere").val();
+    mydata={'csrfmiddlewaretoken':csrf,'name':name,'email':email,'date_naissance':date_naissance,'telephone':telephone,
+'ville':ville,'name_pere':name_pere,'name_mere':name_mere,'designation':designation,'institution':institution,'fillier':fillier,
+'batch':batch,'address':address,'telephone_pere':telephone_pere,'telephone_mere':telephone_pere}
+console.log(mydata);   
+output="";
+$.ajax({
+        url:'save',
+        method:"POST",
+        data:mydata,
+        success:function(response){
+            x=response.universities;
+            for(var i=0;i<x.length;i++){
+                output+= "<tr>"+
+                    "<td>"+
+         '<input type="button" id="edit" name="edit" value="EDIT" data-sid='+x[i].id +' class="btn btn-warning"/>'+
+          "</td>"+
+         "<td>"+
+            '<input type="button" id="delete" name="delete" value="DELETE" data-sid='+x[i].id +' class="btn btn-danger"/>'+
+           "</td>"+
+           "<td>"+x[i].id+"</td>"+
+
+                "<td>"+x[i].name+"</td>"+
+                "<td>"+x[i].email+"</td>"+
+                "<td>"+x[i].date_naissance+"</td>"+
+                "<td>"+x[i].telephone+"</td>"+
+
+                "<td>"+x[i].ville+"</td>"+
+                "<td>"+x[i].name_pere+"</td>"+
+                "<td>"+x[i].name_mere+"</td>"+
+                "<td>"+x[i].designation+"</td>"+
+
+                "<td>"+x[i].institution+"</td>"+
+                "<td>"+x[i].fillier+"</td>"+
+                "<td>"+x[i].batch+"</td>"+
+                "<td>"+x[i].address+"</td>"+
+                "<td>"+x[i].telephone_pere+"</td>"+
+                "<td>"+x[i].telephone_mere+"</td>"+
+               
+           
+           +"</tr>";
+        
+
+        }
+        $('form')[0].reset();
+        $("#tbody").html(output);
+    }
+        
+
+    })
+});
+
+$("#update").click(function(){
+    var id=$("#studentid").val();
+      var name=$("#id_name").val();
+      var email=$("#email").val();
+      var date_naissance=$("#id_date_naissance").val();
+      var telephone=$("#id_telephone").val();
+      var ville=$("#id_ville").val();
+      var name_pere=$("#id_name_pere").val();
+      var name_mere=$("#id_name_mere").val();
+      var designation=$("#id_designation").val();
+      var institution=$("#id_institution").val();
+      var fillier=$("#id_fillier").val();
+      var batch=$("#id_batch").val();
+      var address=$("#id_address").val();
+      var telephone_pere=$("#id_telephone_pere").val();
+      var telephone_mere=$("#id_telephone_pere").val();
+    mydata={'csrfmiddlewaretoken':csrf,'id':id,'name':name,'email':email,'date_naissance':date_naissance,'telephone':telephone,
+'ville':ville,'name_pere':name_pere,'name_mere':name_mere,'designation':designation,'institution':institution,'fillier':fillier,
+'batch':batch,'address':address,'telephone_pere':telephone_pere,'telephone_mere':telephone_pere}
+console.log(mydata);   
+output="";
+$.ajax({
+        url:'update',
+        method:"POST",
+        data:mydata,
+        success:function(response){
+            x=response.universities;
+            for(var i=0;i<x.length;i++){
+                output+= "<tr>"+
+                    "<td>"+
+         '<input type="button" id="edit" name="edit" value="EDIT" data-sid='+x[i].id +' class="btn btn-warning"/>'+
+          "</td>"+
+         "<td>"+
+            '<input type="button" id="delete" name="delete" value="DELETE" data-sid='+x[i].id +' class="btn btn-danger"/>'+
+           "</td>"+
+           "<td>"+x[i].id+"</td>"+
+                "<td>"+x[i].name+"</td>"+
+                "<td>"+x[i].email+"</td>"+
+                "<td>"+x[i].date_naissance+"</td>"+
+                "<td>"+x[i].telephone+"</td>"+
+
+                "<td>"+x[i].ville+"</td>"+
+                "<td>"+x[i].name_pere+"</td>"+
+                "<td>"+x[i].name_mere+"</td>"+
+                "<td>"+x[i].designation+"</td>"+
+
+                "<td>"+x[i].institution+"</td>"+
+                "<td>"+x[i].fillier+"</td>"+
+                "<td>"+x[i].batch+"</td>"+
+                "<td>"+x[i].address+"</td>"+
+                "<td>"+x[i].telephone_pere+"</td>"+
+                "<td>"+x[i].telephone_mere+"</td>"+
+           +"</tr>";
+        
+
+        }
+        $('form')[0].reset();
+        $("#tbody").html(output);
+    }
+        
+
+    })
+});
+
+
+
+
+
+$("#tbody").on("click","#delete",function(){
+ var csrf=$("input[name=csrfmiddlewaretoken]").val(); 
+let id=$(this).attr("data-sid");
+ myth=this;
+mydata={csrfmiddlewaretoken:csrf,id:id}
+$.ajax({
+url:"delete",
+method:'POST',
+data:mydata,
+success:function(response){
+$(myth).closest("tr").fadeOut();
+},
+});
+});
+
+$("#tbody").on("click","#edit",function(){
+var csrf=$("input[name=csrfmiddlewaretoken]").val(); 
+let id=$(this).attr("data-sid");
+ myth=this;
+mydata={csrfmiddlewaretoken:csrf,id:id}
+$.ajax({
+url:"edit",
+method:'POST',
+data:mydata,
+success:function(response){
+    
+ 
+ 
+var id=response.data["id"];
+      var name=response.data["name"];
+      var date_naissance=response.data["date_naissance"];
+      var telephone=response.data["telephone"];
+      var ville=response.data["ville"];
+      var name_pere=response.data["name_pere"];
+      var name_mere=response.data["name_mere"];
+      var designation=response.data["designation"];
+      var institution=response.data["institution"];
+      var fillier=response.data["fillier"];
+      var batch=response.data["batch"];
+      var address=response.data["address"];
+      var telephone_pere=response.data["telephone_pere"];
+      var telephone_mere=response.data["telephone_mere"];
+
+
+      
+      $("#studentid").val(id);
+ $("#id_name").val(name);
+       $("#id_date_naissance").val(date_naissance);
+    $("#id_telephone").val(telephone);
+    $("#id_ville").val(ville);
+      $("#id_name_pere").val(name_pere);
+      $("#id_name_mere").val(name_mere);
+      $("#id_designation").val(designation);
+      $("#id_institution").val(institution);
+      $("#id_fillier").val(fillier);
+      $("#id_batch").val(batch);
+      $("#id_address").val(address);
+      $("#id_telephone_pere").val(telephone_pere);
+      $("#id_telephone_mere").val(telephone_mere);
+},
+});
+});
+$("#savenotes").click(function(){
+   var csrf=$("input[name=csrfmiddlewaretoken]").val(); 
+   var id_university= $('#id_university').val()
+   var id=$('#idhidden').val()
+   var id_year= $('#id_year').val()
+   var id_sem=$('#id_sem').val()
+   var id_matiere=$('#id_matiere').val()
+   var id_notes=$('#id_notes').val()
+   var id_characteristic= $('#id_characteristic').val()
+   var id_matiere=$('#id_matiere').val()
+   var id_moyen=$('#id_moyen').val()
+   mydata={csrfmiddlewaretoken:csrf,'university':id_university,'year':id_year,'sem':id_sem,'matiere':id_matiere,
+   'notes':id_notes,'characteristic':id_characteristic,'moyen':id_moyen}
+output=""
+$.ajax({
+    url:'savenotes',
+    data:mydata,
+    method:'POST',
+    success:function(response){
+        console.log(response.notes)
+        x=response.notes;
+            for(var i=0;i<x.length;i++){
+                output+= "<tr>"+
+                    "<td>"+x[i].university_id+"</td>"+
+                "<td>"+x[i].year+"</td>"+
+                "<td>"+x[i].sem+"</td>"+
+
+                "<td>"+x[i].matiere+"</td>"+
+                "<td>"+x[i].notes+"</td>"+
+                "<td>"+x[i].characteristic+"</td>"+
+                "<td>"+x[i].moyen+"</td>"+
+                "<td>"+
+         '<input type="button" id="editnotes" name="editnotes" value="EDIT" data-sid='+x[i].id +' class="btn btn-warning"/>'+
+          "</td>"+
+         "<td>"+
+            '<input type="button" id="deletenotes" name="delete" value="DELETE" data-sid='+x[i].id +' class="btn btn-danger"/>'+
+           "</td></tr>";
+        
+
+        }
+        $('form')[1].reset();
+        $("#tbodynotes").html(output);
+    }
+
+})
+})
+$("#tbodynotes").on("click","#deletenotes",function(){
+    var csrf=$("input[name=csrfmiddlewaretoken]").val(); 
+    let id=$(this).attr("data-sid");
+ myth=this;
+mydata={csrfmiddlewaretoken:csrf,id:id}
+$.ajax({
+url:"deletenotes",
+method:'POST',
+data:mydata,
+success:function(response){
+$(myth).closest("tr").fadeOut();
+},
+})
+})
+
+
+
+$("#tbodynotes").on("click","#editnotes",function(){
+var csrf=$("input[name=csrfmiddlewaretoken]").val(); 
+let id=$(this).attr("data-sid");
+ myth=this;
+mydata={csrfmiddlewaretoken:csrf,id:id}
+$.ajax({
+url:"editnotes",
+method:'POST',
+data:mydata,
+success:function(response){
+console.log(response.data)
+$('#idhidden').val(response.data['id'])
+ $('#id_university').val(response.data['uid'])
+ $('#id_year').val(response.data['year'])
+ $('#id_sem').val(response.data['sem'])
+ $('#id_matiere').val(response.data['matiere'])
+ $('#id_notes').val(response.data['notes'])
+  $('#id_characteristic').val(response.data['characteristic'])
+ $('#id_matiere').val(response.data['matiere'])
+   $('#id_moyen').val(response.data['moyen'])
+}
+})
+})
+
+$("#updatenotes").click(function(){
+    var csrf=$("input[name=csrfmiddlewaretoken]").val(); 
+   var id_university= $('#id_university').val()
+   var id=$('#idhidden').val()
+   var id_year= $('#id_year').val()
+   var id_sem=$('#id_sem').val()
+   var id_matiere=$('#id_matiere').val()
+   var id_notes=$('#id_notes').val()
+   var id_characteristic= $('#id_characteristic').val()
+   var id_matiere=$('#id_matiere').val()
+   var id_moyen=$('#id_moyen').val()
+   mydata={csrfmiddlewaretoken:csrf,'id':id,'university':id_university,'year':id_year,'sem':id_sem,'matiere':id_matiere,
+   'notes':id_notes,'characteristic':id_characteristic,'moyen':id_moyen}
+   output=""
+   $.ajax({
+    url:'updatenotes',
+    data:mydata,
+    method:'POST',
+    success:function(response){
+        console.log(response.notes)
+        x=response.notes;
+            for(var i=0;i<x.length;i++){
+                output+= "<tr>"+
+                "<td>"+x[i].university_id+"</td>"+
+                "<td>"+x[i].year+"</td>"+
+                "<td>"+x[i].sem+"</td>"+
+
+                "<td>"+x[i].matiere+"</td>"+
+                "<td>"+x[i].notes+"</td>"+
+                "<td>"+x[i].characteristic+"</td>"+
+                "<td>"+x[i].moyen+"</td>"+
+                "<td>"+
+         '<input type="button" id="editnotes" name="editnotes" value="EDIT" data-sid='+x[i].id +' class="btn btn-warning"/>'+
+          "</td>"+
+         "<td>"+
+            '<input type="button" id="deletenotes" name="delete" value="DELETE" data-sid='+x[i].id +' class="btn btn-danger"/>'+
+           "</td></tr>";
+        
+
+        }
+        $('form')[1].reset();
+        $("#tbodynotes").html(output);
+    }
+
+})
+
+})
+
+var val=$('#id_details').val();
+$('#education').click(function(){
+   output="";
+    mydata={'id':val}
+    console.log(mydata);
+    $.ajax({
+           url:'details',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+
+            
+            output= '<table class="table table-hover" style="margin: 20px;" >'+
+     '<tr>'+
+        ' <td style="border: none;" class=" text-primary">University Name :</td>'+
+        '<td style="border: none;" >'+response.details['institution']+'</td>'+
+     '</tr>'+
+     '<tr>'+
+       ' <td style="border: none;" class=" text-primary">Filliere :</td>'+
+       ' <td style="border: none;">'+response.details['fillier']+'</td>'+
+    '</tr>'+
+    '<tr>'+
+        '<td style="border: none;" class=" text-primary">Grades :</td>'+
+       ' <td style="border: none;">'+ response.details['batch']+'</td></tr></table>';
+     $('.for_details').html(output)
+           }
+       })
+})
+
+$('#familly').click(function(){
+   output="";
+    mydata={'id':val}
+    console.log(mydata);
+    $.ajax({
+           url:'details',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+              output= '<table class="table table-hover" style="margin: 20px;" ><thead>'+
+        '<th style="border: none;" ></th>'+
+        '<th style="border: none;" >Names</th>'+
+        '<th style="border: none;" >Phones</th>'+
+    '</thead><tr >'+
+      '<td style="border: none;" class=" text-primary">Father:</td>'+
+        '<td style="border: none;" >'+response.details['name_pere']+'</td>'+
+        '<td style="border: none;" >'+response.details['telephone_pere']+'</td>'+
+    '</tr><tr>'+
+       '<td style="border: none;" class=" text-primary">Mother:</td>'+
+       '<td style="border: none;" >'+response.details['name_mere']+'</td>'+
+       '<td style="border: none;" >'+response.details['telephone_mere']+'</td>'+
+   '</tr></table>';
+     $('.for_details').html(output)
+           }
+       })
+})
+
+       $('#origine').click(function(){
+   output="";
+    mydata={'id':val}
+    console.log(mydata);
+    $.ajax({
+           url:'details',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+              output= '<table class="table table-hover" style="margin: 20px;" ><tr >'+
+      '<td style="border: none;" class=" text-primary">Origine:</td>'+
+        '<td style="border: none;" >'+response.details['ville']+'</td>'+
+        '<td style="border: none;" class=" text-primary">Date de naissance:</td>'+
+        '<td style="border: none;" >'+response.details['date_naissance']+'</td>'+
+    '</tr><tr>'+
+       '<td style="border: none;" class=" text-primary">Phone number:</td>'+
+       '<td style="border: none;" >'+response.details['telephone']+'</td>'+
+       
+       '<td style="border: none;" class=" text-primary">Email:</td>'+
+       '<td style="border: none;" >'+response.details['email']+'</td>'+
+       
+   '</tr></table>';
+     $('.for_details').html(output)
+           }
+       })
+       
+})
+
+$('#2021').click(function(){
+    output="";
+    output2="";
+    output5="";
+    output_1="";
+    mydata={'id':val,'year':'2021','characteristic':'Academic'}
+    $.ajax({
+           url:'notesdetails',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+                //sem1
+                if (response.details!=""){
+                   var sem1=response.details['sem1'];
+                   var moy=response.details['moyen'];
+                   var matiere=sem1['matiere'];
+                   var notes=sem1['notes'];
+                   var m=matiere.split("-");
+                   var n=notes.split("-");
+                   output1="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output2+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output3="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy+"</td></tr></table>";
+                   output=output1+output2+output3;
+                   console.log(output);
+                   $('#sem1').html(output);
+
+                   var sem2=response.details['sem2'];
+                   var matiere2=sem2['matiere'];
+                   var moy2=response.details['moyen2'];
+                   var notes2=sem2['notes'];
+                   var m=matiere2.split("-");
+                   var n=notes2.split("-");
+                   output4="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output5+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output6="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy2+"</td></tr></table>";
+                   output_1=output4+output5+output6;
+                   console.log(output_1);
+                   $('#sem2').html(output_1);
+           }else{
+            $('#sem1').html("");
+            $('#sem2').html("");
+           }
+        }
+        })
+
+})
+
+$('#2022').click(function(){
+    output="";
+    output2="";
+    output5="";
+    output_1="";
+    mydata={'id':val,'year':'2022','characteristic':'Academic'}
+    $.ajax({
+           url:'notesdetails',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+                //sem1
+                if (response.details!=""){
+                   var sem1=response.details['sem1'];
+                   var matiere=sem1['matiere'];
+                   var moy=response.details['moyen'];
+                   var notes=sem1['notes'];
+                   var m=matiere.split("-");
+                   var n=notes.split("-");
+                   output1="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output2+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output3="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy+"</td></tr></table>";
+                   output=output1+output2+output3;
+                   console.log(output);
+                   $('#sem1').html(output);
+                   var sem2=response.details['sem2'];
+                   if (sem2!=""){ 
+                   var matiere2=sem2['matiere'];
+                   var notes2=sem2['notes'];
+                   var moy2=response.details['moyen2'];
+                   var m=matiere2.split("-");
+                   var n=notes2.split("-");
+                   output4="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output5+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output6="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy2+"</td></tr></table>";
+                   output_1=output4+output5+output6;
+                   console.log(output_1);
+                   $('#sem2').html(output_1);
+                   }
+                   else{$('#sem2').html("");}
+                }else{
+            $('#sem1').html("");
+            $('#sem2').html("");
+           }
+           }
+        })
+
+})
+
+
+$('#2023').click(function(){
+    output="";
+    output2="";
+    output5="";
+    output_1="";
+    mydata={'id':val,'year':'2023','characteristic':'Academic'}
+    $.ajax({
+           url:'notesdetails',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+                //sem1
+                if (response.details!=""){
+                   var sem1=response.details['sem1'];
+                   var matiere=sem1['matiere'];
+                   var notes=sem1['notes'];
+                   var m=matiere.split("-");
+                   var moy=response.details['moyen'];
+                   var n=notes.split("-");
+                   output1="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output2+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output3="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy+"</td></tr></table>";
+                   output=output1+output2+output3;
+                   console.log(output);
+                   $('#sem1').html(output);
+                   var sem2=response.details['sem2'];
+                   if (sem2!=""){ 
+                   var matiere2=sem2['matiere'];
+                   var notes2=sem2['notes'];
+                   var moy2=response.details['moyen2'];
+                   var m=matiere2.split("-");
+                   var n=notes2.split("-");
+                   output4="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output5+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output6="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy2+"</td></tr></table>";
+
+                   output_1=output4+output5+output6;
+                   console.log(output_1);
+                   $('#sem2').html(output_1);
+                   }
+                   else{$('#sem2').html("");}
+                }else{
+            $('#sem1').html("");
+            $('#sem2').html("");
+           }
+           }
+        })
+
+})
+
+$('#2024').click(function(){
+    output="";
+    output2="";
+    output5="";
+    output_1="";
+    mydata={'id':val,'year':'2024','characteristic':'Academic'}
+    $.ajax({
+           url:'notesdetails',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+                //sem1
+                if (response.details!=""){
+                   var sem1=response.details['sem1'];
+                   var matiere=sem1['matiere'];
+                   var notes=sem1['notes'];
+                   var m=matiere.split("-");
+                   var n=notes.split("-");
+                   var moy=response.details['moyen'];
+                   output1="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output2+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output3="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy+"</td></tr></table>";
+                   output=output1+output2+output3;
+                   console.log(output);
+                   $('#sem1').html(output);
+                   var sem2=response.details['sem2'];
+                   if (sem2!=""){ 
+                   var matiere2=sem2['matiere'];
+                   var notes2=sem2['notes'];
+                   var moy2=response.details['moyen2'];
+                   var m=matiere2.split("-");
+                   var n=notes2.split("-");
+                   output4="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output5+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output6="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy2+"</td></tr></table>";
+                   output_1=output4+output5+output6;
+                   console.log(output_1);
+                   $('#sem2').html(output_1);
+                   }
+                   else{$('#sem2').html("");}
+                }else{
+            $('#sem1').html("");
+            $('#sem2').html("");
+           }
+           }
+        })
+
+})
+
+
+$('#2025').click(function(){
+    output="";
+    output2="";
+    output5="";
+    output_1="";
+    mydata={'id':val,'year':'2025','characteristic':'Academic'}
+    $.ajax({
+           url:'notesdetails',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+                //sem1
+                if (response.details!=""){
+                   var sem1=response.details['sem1'];
+                   var matiere=sem1['matiere'];
+                   var notes=sem1['notes'];
+                   var moy=response.details['moyen'];
+                   var m=matiere.split("-");
+                   var n=notes.split("-");
+                   output1="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output2+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output3="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy+"</td></tr></table>";
+                   output=output1+output2+output3;
+                   console.log(output);
+                   $('#sem1').html(output);
+                   var sem2=response.details['sem2'];
+                   if (sem2!=""){ 
+                   var matiere2=sem2['matiere'];
+                   var notes2=sem2['notes'];
+                   var m=matiere2.split("-");
+                   var n=notes2.split("-");
+                   var moy2=response.details['moyen2'];
+                   output4="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output5+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output6="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy2+"</td></tr></table>";
+                   output_1=output4+output5+output6;
+                   console.log(output_1);
+                   $('#sem2').html(output_1);
+                   }
+                   else{$('#sem2').html("");}
+                }else{
+            $('#sem1').html("");
+            $('#sem2').html("");
+           }
+           }
+        })
+})
+
+$('#2021A').click(function(){
+    output="";
+    output2="";
+    output5="";
+    output_1="";
+    mydata={'id':val,'year':'2021','characteristic':'Dine'}
+    $.ajax({
+           url:'notesdetails',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+                //sem1
+                if (response.details!=""){
+                   var sem1=response.details['sem1'];
+                   var matiere=sem1['matiere'];
+                   var notes=sem1['notes'];
+                   var m=matiere.split("-");
+                   var n=notes.split("-");
+                   var moy=response.details['moyen'];
+                   output1="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output2+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output3="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy+"</td></tr></table>";
+                   output=output1+output2+output3;
+                   console.log(output);
+                   $('#sem1A').html(output);
+
+                   var sem2=response.details['sem2'];
+                   var matiere2=sem2['matiere'];
+                   var notes2=sem2['notes'];
+                   var m=matiere2.split("-");
+                   var n=notes2.split("-");
+                   var moy2=response.details['moyen2'];
+                   output4="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output5+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output6="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy2+"</td></tr></table>";
+                   output_1=output4+output5+output6;
+                   console.log(output_1);
+                   $('#sem2A').html(output_1);
+           }else{
+            $('#sem1A').html("");
+            $('#sem2A').html("");
+           }
+        }
+        })
+
+})
+
+
+$('#2022A').click(function(){
+    output="";
+    output2="";
+    output5="";
+    output_1="";
+    mydata={'id':val,'year':'2022','characteristic':'Dine'}
+    $.ajax({
+           url:'notesdetails',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+                //sem1
+                if (response.details!=""){
+                   var sem1=response.details['sem1'];
+                   var matiere=sem1['matiere'];
+                   var notes=sem1['notes'];
+                   var m=matiere.split("-");
+                   var n=notes.split("-");
+                   var moy=response.details['moyen'];
+                   output1="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output2+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output3="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy+"</td></tr></table>";
+                   output=output1+output2+output3;
+                   console.log(output);
+                   $('#sem1A').html(output);
+
+                   var sem2=response.details['sem2'];
+                   var matiere2=sem2['matiere'];
+                   var notes2=sem2['notes'];
+                   var m=matiere2.split("-");
+                   var n=notes2.split("-");
+                   var moy2=response.details['moyen'];
+                   output4="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output5+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output6="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy2+"</td></tr></table>";
+                   output_1=output4+output5+output6;
+                   console.log(output_1);
+                   $('#sem2A').html(output_1);
+           }else{
+            $('#sem1A').html("");
+            $('#sem2A').html("");
+           }
+        }
+        })
+
+})
+
+$('#2023A').click(function(){
+    output="";
+    output2="";
+    output5="";
+    output_1="";
+    mydata={'id':val,'year':'2023','characteristic':'Dine'}
+    $.ajax({
+           url:'notesdetails',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+                //sem1
+                if (response.details!=""){
+                   var sem1=response.details['sem1'];
+                   var matiere=sem1['matiere'];
+                   var notes=sem1['notes'];
+                   var m=matiere.split("-");
+                   var moy=response.details['moyen'];
+                   var n=notes.split("-");
+                   output1="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output2+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output3="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy+"</td></tr></table>";
+                   output=output1+output2+output3;
+                   console.log(output);
+                   $('#sem1A').html(output);
+
+                   var sem2=response.details['sem2'];
+                   var matiere2=sem2['matiere'];
+                   var notes2=sem2['notes'];
+                   var m=matiere2.split("-");
+                   var n=notes2.split("-");
+                   var moy2=response.details['moyen2'];
+                   output4="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output5+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output6="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy2+"</td></tr></table>";
+                   output_1=output4+output5+output6;
+                   console.log(output_1);
+                   $('#sem2A').html(output_1);
+           }else{
+            $('#sem1A').html("");
+            $('#sem2A').html("");
+           }
+        }
+        })
+
+})
+
+$('#2024A').click(function(){
+    output="";
+    output2="";
+    output5="";
+    output_1="";
+    mydata={'id':val,'year':'2024','characteristic':'Dine'}
+    $.ajax({
+           url:'notesdetails',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+                //sem1
+                if (response.details!=""){
+                   var sem1=response.details['sem1'];
+                   var matiere=sem1['matiere'];
+                   var notes=sem1['notes'];
+                   var m=matiere.split("-");
+                   var n=notes.split("-");
+                   var moy=response.details['moyen'];
+                   output1="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output2+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output3="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy+"</td></tr></table>";
+                   output=output1+output2+output3;
+                   console.log(output);
+                   $('#sem1A').html(output);
+
+                   var sem2=response.details['sem2'];
+                   var matiere2=sem2['matiere'];
+                   var notes2=sem2['notes'];
+                   var m=matiere2.split("-");
+                   var n=notes2.split("-");
+                   var moy2=response.details['moyen2'];
+                   output4="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output5+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output6="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy2+"</td></tr></table>";
+                   output_1=output4+output5+output6;
+                   console.log(output_1);
+                   $('#sem2A').html(output_1);
+           }else{
+            $('#sem1A').html("");
+            $('#sem2A').html("");
+           }
+        }
+        })
+
+})
+
+$('#2025A').click(function(){
+    output="";
+    output2="";
+    output5="";
+    output_1="";
+    mydata={'id':val,'year':'2025','characteristic':'Dine'}
+    $.ajax({
+           url:'notesdetails',
+           data:mydata,
+           method:'GET',
+           success:function(response){
+                //sem1
+                if (response.details!=""){
+                   var sem1=response.details['sem1'];
+                   var matiere=sem1['matiere'];
+                   var notes=sem1['notes'];
+                   var m=matiere.split("-");
+                   var moy=response.details['moyen'];
+                   var n=notes.split("-");
+                   output1="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output2+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output3="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy+"</td></tr></table>";
+                   output=output1+output2+output3;
+                   console.log(output);
+                   $('#sem1A').html(output);
+
+                   var sem2=response.details['sem2'];
+                   var matiere2=sem2['matiere'];
+                   var notes2=sem2['notes'];
+                   var m=matiere2.split("-");
+                   var n=notes2.split("-");
+                   var moy2=response.details['moyen'];
+                   output4="<table class='table'><thead><th class='text-center'>Matiere</th><th class='text-center'>Notes</th></thead>";
+                   for(var i=0;i<m.length;i++){
+                    output5+="<tr><td class='text-center'>"+m[i]+"</td>"+"<td class='text-center'>"+n[i]+"</td></tr>"; 
+                   }
+                   output6="<tr class='text-center alert alert-primary'><td>Moyen</td><td>"+moy2+"</td></tr></table>";
+                   output_1=output4+output5+output6;
+                   console.log(output_1);
+                   $('#sem2A').html(output_1);
+           }else{
+            $('#sem1A').html("");
+            $('#sem2A').html("");
+           }
+        }
+        })
+
+})
+
+$('#searchnamebtn').click(function(){
+    var username=$('#searchname').val();
+    mydata={"name":username}
+    output="";
+    $.ajax({
+        url:'search',
+        method:'GET',
+        data:mydata,
+        success:function(response){
+            x=response.data;
+            for(var i=0;i<x.length;i++){
+                output+= "<tr>"+
+                    "<td>"+
+         '<input type="button" id="edit" name="edit" value="EDIT" data-sid='+x[i].id +' class="btn btn-warning"/>'+
+          "</td>"+
+         "<td>"+
+            '<input type="button" id="delete" name="delete" value="DELETE" data-sid='+x[i].id +' class="btn btn-danger"/>'+
+           "</td>"+
+           "<td>"+x[i].id+"</td>"+
+                "<td>"+x[i].name+"</td>"+
+                "<td>"+x[i].email+"</td>"+
+                "<td>"+x[i].date_naissance+"</td>"+
+                "<td>"+x[i].telephone+"</td>"+
+
+                "<td>"+x[i].ville+"</td>"+
+                "<td>"+x[i].name_pere+"</td>"+
+                "<td>"+x[i].name_mere+"</td>"+
+                "<td>"+x[i].designation+"</td>"+
+
+                "<td>"+x[i].institution+"</td>"+
+                "<td>"+x[i].fillier+"</td>"+
+                "<td>"+x[i].batch+"</td>"+
+                "<td>"+x[i].address+"</td>"+
+                "<td>"+x[i].telephone_pere+"</td>"+
+                "<td>"+x[i].telephone_mere+"</td>"+
+           +"</tr>";
+        
+
+        }
+        
+        $("#tbody").html(output);
+        }
+    })
+})
+
+
+$('#searchidbtn').click(function(){
+    var id=$('#searchid').val();
+    mydata={"name":id}
+    output="";
+    $.ajax({
+        url:'searchid',
+        method:'GET',
+        data:mydata,
+        success:function(response){
+    
+            console.log(response.data)
+        x=response.data;
+            for(var i=0;i<x.length;i++){
+                output+= "<tr>"+
+                    "<td>"+x[i].university_id+"</td>"+
+                "<td>"+x[i].year+"</td>"+
+                "<td>"+x[i].sem+"</td>"+
+
+                "<td>"+x[i].matiere+"</td>"+
+                "<td>"+x[i].notes+"</td>"+
+                "<td>"+x[i].characteristic+"</td>"+
+                "<td>"+x[i].moyen+"</td>"+
+                "<td>"+
+         '<input type="button" id="editnotes" name="editnotes" value="EDIT" data-sid='+x[i].id +' class="btn btn-warning"/>'+
+          "</td>"+
+         "<td>"+
+            '<input type="button" id="deletenotes" name="delete" value="DELETE" data-sid='+x[i].id +' class="btn btn-danger"/>'+
+           "</td></tr>";
+        
+
+        }
+        $('form')[1].reset();
+        $("#tbodynotes").html(output);
+        }
+    })
+})
+
+
+});
+
+
+
+</script>

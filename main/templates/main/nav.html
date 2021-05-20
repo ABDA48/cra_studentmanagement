@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-light sticky-top">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="navbar-brand" style="color: azure;" href="#">CRA Students</a>
+          </li>
+      <li class="nav-item active" >
+        <a class="nav-link" href="{%url 'home'%}"  style="color: azure;">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'university'%}" style="color: azure;">University</a>
+      </li>
+
+      <li class="dropdown nav-item">
+        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" style="color: aliceblue;">Jeunes
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu bg-dark">
+          <li class="nav-link jstyle"><a href="{%url 'jeunegarcons'%}" style="text-decoration: none;color: aliceblue;  margin: 10px;">Jeunes Garcons</a></li>
+          <li class="nav-link jstyle"><a href="{%url 'jeunefille'%}" style="text-decoration: none;color: aliceblue;  margin: 10px;">Jeunes Fille</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown nav-item">
+        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" style="color: aliceblue;">Petit
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu bg-dark">
+          <li class="nav-link jstyle "><a href="{%url 'petitgarcons'%}" style="text-decoration: none;color: aliceblue; margin: 10px;">Petit Garcons</a></li>
+          <li class="nav-link jstyle"><a href="{%url 'petitefille'%}" style="text-decoration: none;color: aliceblue;  margin: 10px;"">Petite Fille</a></li>
+        </ul>
+      </li>
+      <style>
+        .jstyle:hover{
+        background-color: #007bff;
+        }
+      </style>
+      
+      {%if u%}
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'studentadd'%}" style="color: azure;">Admin University</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'jeunneadd'%}" style="color: azure;">Admin Jeunes</a>
+      </li>
+      {%endif%}
+      <li class="nav-item " >
+        <a  class="nav-link"    href="{%url 'logout'%}" style="color: azure;right: 0; position: absolute;">Log OUT</a>
+      </li>
+    </ul>
+  </nav>
