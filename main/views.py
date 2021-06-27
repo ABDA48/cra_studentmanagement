@@ -12,7 +12,7 @@ from django.contrib.auth.models import Group
 
 from django import template
 import qrcode
-Root="http://127.0.0.1:8000/"
+Root="https://cramanagement.herokuapp.com/"
 register = template.Library()
 
 @register.filter()
