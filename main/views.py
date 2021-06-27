@@ -11,6 +11,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import Group
 
 from django import template
+import cloudinary
 import qrcode
 Root="https://cramanagement.herokuapp.com/"
 register = template.Library()
@@ -764,6 +765,7 @@ def universitybages(response):
         id=item.id
         img=qrcode.make(Root+"/university/"+str(id)+"/resume")
         img.save("main/static/images/"+str(id)+".png")
+        cloudinary.uploader.upload("main/static/images/"+str(id)+".png")
     return render(response,"main/bages.html",{'ls':ls,'root':Root})
 
 def  jeunedetailbages(response):
