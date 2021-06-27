@@ -764,9 +764,8 @@ def universitybages(response):
         print(type(item))
         id=item.id
         img=qrcode.make(Root+"/university/"+str(id)+"/resume")
-        img.save(str(id)+".png")
-        cloudinary.uploader.upload(str(id)+".png")
-        resultat= cloudinary.uploader.upload(str(id)+".png",overwrite =True,use_filename=True)
+        img.save("main/static/images/"+str(id)+".png")
+        cloudinary.uploader.upload("main/static/images/"+str(id)+".png",overwrite =True,use_filename=True)
         url=resultat.get("url")
     return render(response,"main/bages.html",{'ls':ls,'root':Root})
 
