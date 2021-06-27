@@ -45,6 +45,10 @@ path('jeunedetail/<int:id>',views.jeunedetail,name='jeunedetail'),
 path("jeunedetail/<int:id>/resume",views.resumeJeunes,name='resumeJeunes'),
 path('jeunneadd/search',views.jeunneaddsearch,name='jeunneaddsearch'),
 path('jeunneadd/searchid',views.jeunneaddsearchid,name='jeunneaddsearchid'),
+    
+path('university/bages',views.universitybages,name='universitybages'),
+
+path('jeunedetail/bages',views.jeunedetailbages,name='jeunedetailbages'),
 
 
 
