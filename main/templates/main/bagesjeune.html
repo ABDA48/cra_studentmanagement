@@ -1,0 +1,64 @@
+{% extends 'main/base.html'%}
+{% load static  %}
+{% block title%} University  {%endblock%}
+
+
+    {% block content%}
+    <style>
+        .card{
+        height: 300px;
+        margin-top: 20px;
+        margin: 30px;
+        width: 200px;
+        box-shadow:  1px 1px 10px -3px #007bff;
+        position: relative;
+           }
+        .card:hover{
+        transform: scale(1.1);
+        }
+        .img{
+            width:100%;
+            height:100px;
+        }
+        .qrcode{
+            width: 90%;
+    height: 134px;
+    top: 162px;
+    position: absolute;
+        }
+        .images{
+            width:100%;
+            height:100%;
+        }
+        .tag-link{
+            margin:auto;
+        }
+        
+       </style>
+    <div class="row">
+        
+        {% for item in ls %}
+        
+        <div class="col-sm-3 card">
+            
+            <div class="img">
+           <img class="images"src="{{item.imageprofile.url}}" alt="" >
+        </div> 
+        <div>
+           <p class="text-center " style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+            <span class="text-primary" style="font-family: 'Open Sans', sans-serif;font-weight:bold;">{{item.name}}</span><br>
+            
+                {{item.batch}} en <span class="text-warning">{{item.fillier}}</span><br>
+               
+            </p>
+        </div>
+        <div class="images">
+            <img class="qrcode" src="http://127.0.0.1:8000/static/images/{{item.id}}jeune.png" alt="">
+        </div>
+                 
+           </div>
+        {%endfor%}
+
+    
+       </div>
+       {%endblock%}  
