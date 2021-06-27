@@ -760,6 +760,8 @@ def resumeJeunes(response,id):
 def universitybages(response):
     #http://127.0.0.1:8000/university/1001/resume
     ls=University.objects.all()
+    ls=list(ls)
+    root=[]
     for item in ls:
         print(type(item))
         id=item.id
@@ -767,7 +769,9 @@ def universitybages(response):
         img.save("main/static/images/"+str(id)+".png")
         resultat=cloudinary.uploader.upload("main/static/images/"+str(id)+".png",overwrite =True)
         url=resultat.get("url")
-    return render(response,"main/bages.html",{'ls':ls,'root':Root})
+        root.append(url)
+     mylist=zip(ls,root)
+    return render(response,"main/bages.html",{'mylist':mylist,'root':Root})
 
 def  jeunedetailbages(response):
     ls=Jeunes.objects.all()
