@@ -36,7 +36,136 @@ setInterval(function() {
 {%endblock%}
 
 {% block content%}
+<div class="row" style="margin-top: 20px;">
+<div class="col-sm-6">
+  <iframe width="100%" height="400" src="https://www.youtube.com/embed/ubTNdrDvfAY"
+  title="YouTube video player" frameborder="0"
+   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
+</div>
+<div class="col-sm-6">
+  <h4 class="text-center text-primary" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Centre Rassoul Akram (C.R.A) Students Description</h4>
+ <p style="margin:30px;letter-spacing: 2px;">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+   Autem iusto a dolorem porro harum optio praesentium ullam
+    atque totam amet earum ratione vero sint eaque,
+   minus at omnis. Obcaecati, voluptatem.
+ </p>
+</div>
+ 
+</div>
+<h4 class="text-center text-primary" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Students News</h4>
+<div class="abovemain">
+  <span id="left" class="card"><i class="fas fa-2x fa-arrow-left"></i></span>
+  <span id="right" class="card"><i class="fas  fa-2x  fa-arrow-right"></i></span>
+<div class="main">
+<div class="contain">
+  <div class="news card">
+<div class="image">
+  <img src="{% static 'images/img2.jpg' %}" alt="" width="100%" height="200px">
+</div>
+<h6 class="text-center " style="margin: 10px;">New Swimming pool</h6>
+<div class="text-dark" style="padding: 10px;">
+  There are many facilities offered to the Students in C.R.A but this time it's quite unique because 
+They have been given a swimming pool so that they can have fun and enjoy the beautiful views inside C.R.A
+</div>
+  </div>
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus dolorem officia id necessitatibus repellendus voluptatum mollitia quis quia rem? Ut est, fugiat tenetur vitae dolorum impedit deleniti eaque quae nesciunt.
+  <div class="news card">
+    <div class="image">
+      <img src="{% static 'images/img4.jpg' %}" alt="" width="100%" height="200px">
+    </div>
+    <h6 class="text-center " style="margin: 10px;">New Swimming pool</h6>
+    <div class="text-dark" style="padding: 10px;">
+      There are many facilities offered to the Students in C.R.A but this time it's quite unique because 
+    They have been given a swimming pool so that they can have fun and enjoy the beautiful views inside C.R.A
+    </div>
+      </div>
+
+      <div class="news card">
+        <div class="image">
+          <img src="{% static 'images/img3.jpg' %}" alt="" width="100%" height="200px">
+        </div>
+        <h6 class="text-center " style="margin: 10px;">New Swimming pool</h6>
+        <div class="text-dark" style="padding: 10px;">
+          There are many facilities offered to the Students in C.R.A but this time it's quite unique because 
+        They have been given a swimming pool so that they can have fun and enjoy the beautiful views inside C.R.A
+        </div>
+          </div>
+
+          <div class="news card">
+            <div class="image">
+              <img src="{% static 'images/img3.jpg' %}" alt="" width="100%" height="200px">
+            </div>
+            <h6 class="text-center " style="margin: 10px;">New Swimming pool</h6>
+            <div class="text-dark" style="padding: 10px;">
+              There are many facilities offered to the Students in C.R.A but this time it's quite unique because 
+            They have been given a swimming pool so that they can have fun and enjoy the beautiful views inside C.R.A
+            </div>
+              </div>
+
+              
+</div>
+</div>
+</div>
+
+<script>
+  var n=0
+  var k=(document.getElementsByClassName("news").length*40)
+   
+  var interval=setInterval(function(){
+    var c=document.getElementsByClassName("news")
+   for(var i=0;i<c.length;i++){
+     n=n+10
+  c[i].style.transform="translateX("+-n+"px)"
+   }
+   if(n>k){
+    annul_animmation(interval)
+
+   }
+   check(n)
+  },2000)
+  function annul_animmation(int){
+    clearInterval(int);
+}
+
+  $('#left').click(function(){
+    n=n+100
+    animation(n);
+    annul_animmation(interval)
+    console.log(n)
+   
+  })
+  $('#right').click(function(){
+    n=n-100
+    animation(n);
+    annul_animmation(interval)
+    console.log(n)
+    
+    
+  })
+  function animation(n){
+    var c=document.getElementsByClassName("news")
+   for(var i=0;i<c.length;i++){
+  c[i].style.transform="translateX("+-n+"px)"
+  check(n)
+   }
+  }
+
+  function check(n){
+    if(n<=0){
+      document.getElementById('right').style.display="none"
+    }else{
+      document.getElementById('right').style.display="block"
+    }
+
+    if(n>=k){
+      document.getElementById('left').style.display="none"
+    }else{
+      document.getElementById('left').style.display="block"
+    }
+
+  }
+</script>
 
 {%endblock%}
