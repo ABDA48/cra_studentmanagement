@@ -762,6 +762,7 @@ def universitybages(response):
     ls=University.objects.all()
     ls=list(ls)
     root=[]
+    url=""
     for item in ls:
         print(type(item))
         id=item.id
