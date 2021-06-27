@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import cloudinary_storage
+ 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'onpg&*f8)p&*j0nxrn2tm3cf2h6(%eis9-0hz1=+3u7z=lpzkj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://cramanagement.herokuapp.com','127.0.0.1']
 
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
     'main'
 ]
@@ -126,16 +125,12 @@ STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL='/media/'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+ 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'main/static'),
 ]
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dvhzgcmie',
-    'API_KEY': '793146827816192',
-    'API_SECRET': 'ahQ_-lLuXY-8UM0c-Bemt7n_e8g'
-}
+ 
 
 
