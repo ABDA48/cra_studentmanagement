@@ -11,20 +11,19 @@
         margin: 30px;
         width: 200px;
         box-shadow:  1px 1px 10px -3px #007bff;
-        position: relative;
+      
            }
         .card:hover{
         transform: scale(1.1);
         }
         .img{
             width:100%;
-            height:100px;
+            height:200px;
         }
         .qrcode{
             width: 90%;
-    height: 134px;
-    top: 162px;
-    position: absolute;
+    height: 50%;
+   
         }
         .images{
             width:100%;
@@ -37,7 +36,7 @@
        </style>
     <div class="row">
         
-        {% for item in ls %}
+        {% for item,item2 in mylist %}
         
         <div class="col-sm-3 card">
             
@@ -53,7 +52,7 @@
             </p>
         </div>
         <div class="images">
-            <img class="qrcode" src="{{root}}static/images/{{item.id}}.png" alt="">
+            <img class="qrcode" src="item2" alt="">
         </div>
                  
            </div>
