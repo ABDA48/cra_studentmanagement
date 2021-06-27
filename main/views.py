@@ -11,7 +11,8 @@ from django.http import JsonResponse
 from django.contrib.auth.models import Group
 
 from django import template
-
+import qrcode
+Root="http://127.0.0.1:8000/"
 register = template.Library()
 
 @register.filter()
@@ -55,7 +56,10 @@ def singin(response):
             ugroup.groups.add(group)
             return redirect('login')
         else:
-            messages.info(response,"UserName already existed or password doesn't mactch")
+             messages.info(response,"Your Username can’t be too similar to your password.")
+             messages.info(response,"Your password must contain at least 8 characters. ex:abcd@1234")
+             messages.info(response,"UserName already existed or password doesn't mactch")
+
     form=UserSingin()
     return render(response,"main/singin.html",{"form":form})
 @login_required(login_url='login')
@@ -752,6 +756,27 @@ def resumeJeunes(response,id):
         'ns1_2023D':ns1_2023D,'ns1_2024D':ns1_2024D,'ns1_2025D':ns1_2025D
         })
        
+def universitybages(response):
+    #http://127.0.0.1:8000/university/1001/resume
+    ls=University.objects.all()
+    for item in ls:
+        print(type(item))
+        id=item.id
+        img=qrcode.make(Root+"/university/"+str(id)+"/resume")
+        img.save("main/static/images/"+str(id)+".png")
+    return render(response,"main/bages.html",{'ls':ls,'root':Root})
+
+def  jeunedetailbages(response):
+    ls=Jeunes.objects.all()
+    for item in ls:
+        print(type(item))
+        id=item.id
+        img=qrcode.make(Root+"/jeunedetail/"+str(id)+"/resume")
+        img.save("main/static/images/"+str(id)+"jeune.png")
+    return render(response,"main/bagesjeune.html",{'ls':ls,'root':Root})
+       
+
+    
         
                 
      
