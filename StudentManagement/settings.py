@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'onpg&*f8)p&*j0nxrn2tm3cf2h6(%eis9-0hz1=+3u7z=lpzkj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['cramanagement.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['https://cramanagement.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -37,14 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'cloudinary_storage',
-     'django.contrib.staticfiles',
+    'django.contrib.staticfiles',
     'main'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -120,15 +121,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL='/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'main/static'),
 ]
+
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dvhzgcmie',
     'API_KEY': '793146827816192',
