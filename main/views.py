@@ -775,7 +775,7 @@ def universitybages(response):
         
     mylist=zip(ls,root) 
          
-    return render(response,"main/bages.html",{'ls':ls,'root':Root})
+    return render(response,"main/bages.html",{'mylist':mylist,'root':Root})
 
 def  jeunedetailbages(response):
     ls=Jeunes.objects.all()
