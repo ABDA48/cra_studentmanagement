@@ -37,7 +37,7 @@
        </style>
     <div class="row">
         
-        {% for item in ls %}
+        {% for item,item2 in mylist %}
         
         <div class="col-sm-3 card">
             
@@ -53,7 +53,7 @@
             </p>
         </div>
         <div class="images">
-            <img class="qrcode" src="http://127.0.0.1:8000/static/images/{{item.id}}jeune.png" alt="">
+            <img class="qrcode" src="{{item2}}" alt="{{item.id}}">
         </div>
                  
            </div>
