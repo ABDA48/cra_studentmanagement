@@ -786,12 +786,20 @@ def universitybages(response):
 
 def  jeunedetailbages(response):
     ls=Jeunes.objects.all()
+    ls=list(ls)
+    root=[]
+    url=""
     for item in ls:
         print(type(item))
         id=item.id
         img=qrcode.make(Root+"/jeunedetail/"+str(id)+"/resume")
         img.save("main/static/images/"+str(id)+"jeune.png")
-    return render(response,"main/bagesjeune.html",{'ls':ls,'root':Root})
+        resultat=cloudinary.uploader.upload("main/static/images/"+str(id)+".png",overwrite =True)
+        url=resultat.get("url")
+        root.append(url)
+    
+    mylist=zip(ls,root) 
+    return render(response,"main/bagesjeune.html",{'mylist':mylist,'root':Root})
        
 
     
