@@ -763,6 +763,7 @@ def universitybages(response):
     ls=list(ls)
     root=[]
     url=""
+    
     for item in ls:
         print(type(item))
         id=item.id
@@ -771,6 +772,8 @@ def universitybages(response):
         resultat=cloudinary.uploader.upload("main/static/images/"+str(id)+".png",overwrite =True)
         url=resultat.get("url")
         root.append(url)
+        
+    mylist=zip(ls,root) 
          
     return render(response,"main/bages.html",{'ls':ls,'root':Root})
 
