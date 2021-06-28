@@ -15,7 +15,7 @@ import cloudinary
 import cloudinary.uploader
 
 import qrcode
-Root="https://cramanagement.herokuapp.com/"
+Root="https://cramanagement.herokuapp.com"
 register = template.Library()
 cloudinary.config(
     cloud_name='dvhzgcmie',
