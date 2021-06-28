@@ -12,9 +12,16 @@ from django.contrib.auth.models import Group
 
 from django import template
 import cloudinary
+import cloudinary.uploader
+
 import qrcode
 Root="https://cramanagement.herokuapp.com/"
 register = template.Library()
+cloudinary.config(
+    cloud_name='dvhzgcmie',
+    api_key= '793146827816192',
+    api_secret= 'ahQ_-lLuXY-8UM0c-Bemt7n_e8g'
+)
 
 @register.filter()
 def range(min=5):
