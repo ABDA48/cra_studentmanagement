@@ -794,7 +794,7 @@ def  jeunedetailbages(response):
         id=item.id
         img=qrcode.make(Root+"/jeunedetail/"+str(id)+"/resume")
         img.save("main/static/images/"+str(id)+"jeune.png")
-        resultat=cloudinary.uploader.upload("main/static/images/"+str(id)+".png",overwrite =True)
+        resultat=cloudinary.uploader.upload("main/static/images/"+str(id)+"jeune.png",overwrite =True)
         url=resultat.get("url")
         root.append(url)
     
