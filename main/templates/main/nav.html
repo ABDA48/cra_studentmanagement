@@ -1,48 +1,78 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-light sticky-top">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="navbar-brand" style="color: azure;" href="#">CRA Students</a>
-          </li>
-      <li class="nav-item active" >
-        <a class="nav-link" href="{%url 'home'%}"  style="color: azure;">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{%url 'university'%}" style="color: azure;">University</a>
-      </li>
+ 
+    <header class="u-clearfix u-header u-header sticky-top" id="sec-3954" style="background-color: white;">
+        <div class="u-clearfix u-sheet u-sheet-1">
+        
+      <a href="#" class="u-image u-logo u-image-1" title="CRA" data-image-width="150" data-image-height="100">
+           CRA
+          </a>  
+          <nav class="u-dropdown-icon u-menu u-menu-dropdown u-offcanvas u-menu-1">
+            <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; text-transform: uppercase; font-weight: 500;">
+              <a class="u-button-style u-custom-active-color u-custom-border u-custom-border-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+                <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;"><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+  </symbol>
+  </defs></svg>
+              </a>
+            </div>
+            <div class="u-custom-menu u-nav-container">
+              <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
+                  <li class="u-nav-item"><a class="u-active-palette-1-base u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="{%url 'home'%}"  style="padding: 10px 20px;">Home</a>
+                  
+     
+  </li><li class="u-nav-item"><a class="u-active-palette-1-base u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white"  href="{%url 'university'%}" style="padding: 10px 20px;">University</a>
+  </li><li class="u-nav-item"><a class="u-active-palette-1-base u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="#" style="padding: 10px 20px;">Jeune</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="{%url 'jeunegarcons'%}">Jeune Garcons</a>
+  </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="{%url 'jeunefille'%}">Jeune Fille</a>
+  </li>
+ 
+</ul>
+  </div>
+  </li><li class="u-nav-item"><a class="u-active-palette-1-base u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" style="padding: 10px 20px;">Petit</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-3"><li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="{%url 'petitefille'%}">Petite Fille</a>
+  </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="{%url 'petitgarcons'%}">Petit Garcon</a>
+  </li></ul>
+  </div>
+  </li>
+  {%if u%}
+  <li class="u-nav-item">
+    <a class="u-active-palette-1-base u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="{%url 'studentadd'%}" style="color: azure;padding: 10px 20px;">Admin University</a>
+  </li>
+  <li class="u-nav-item">
+    <a class="u-active-palette-1-base u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="{%url 'jeunneadd'%}" style="color: azure;padding: 10px 20px;">Admin Jeunes</a>
+  </li>
+  {%endif%}
+  <li class="u-nav-item"><a class="u-active-palette-1-base u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" style="padding: 10px 20px;" href="{%url 'logout'%}"  >Logout</a>
+  </li></ul>
+            </div>
 
-      <li class="dropdown nav-item">
-        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" style="color: aliceblue;">Jeunes
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu bg-dark">
-          <li class="nav-link jstyle"><a href="{%url 'jeunegarcons'%}" style="text-decoration: none;color: aliceblue;  margin: 10px;">Jeunes Garcons</a></li>
-          <li class="nav-link jstyle"><a href="{%url 'jeunefille'%}" style="text-decoration: none;color: aliceblue;  margin: 10px;">Jeunes Fille</a></li>
-        </ul>
-      </li>
-
-      <li class="dropdown nav-item">
-        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" style="color: aliceblue;">Petit
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu bg-dark">
-          <li class="nav-link jstyle "><a href="{%url 'petitgarcons'%}" style="text-decoration: none;color: aliceblue; margin: 10px;">Petit Garcons</a></li>
-          <li class="nav-link jstyle"><a href="{%url 'petitefille'%}" style="text-decoration: none;color: aliceblue;  margin: 10px;"">Petite Fille</a></li>
-        </ul>
-      </li>
-      <style>
-        .jstyle:hover{
-        background-color: #007bff;
-        }
-      </style>
-      
-      {%if u%}
-      <li class="nav-item">
-        <a class="nav-link" href="{%url 'studentadd'%}" style="color: azure;">Admin University</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{%url 'jeunneadd'%}" style="color: azure;">Admin Jeunes</a>
-      </li>
-      {%endif%}
-      <li class="nav-item " >
-        <a  class="nav-link"    href="{%url 'logout'%}" style="color: azure;right: 0; position: absolute;">Log OUT</a>
-      </li>
-    </ul>
-  </nav>
+            <div class="u-custom-menu u-nav-container-collapse">
+              <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                <div class="u-sidenav-overflow">
+                  <div class="u-menu-close"></div>
+                  <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-4"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html" style="padding: 10px 20px;">Home</a>
+  </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{%url 'university'%}" style="padding: 10px 20px;">University</a>
+  </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="#" style="padding: 10px 20px;">Jeune</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-5"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{%url 'jeunegarcons'%}">Jeune Garcons</a>
+  </li><li class="u-nav-item"><a class="u-button-style u-nav-link"href="{%url 'jeunefille'%}">Jeune Fille</a>
+  </li></ul>
+  </div>
+  </li><li class="u-nav-item"><a class="u-button-style u-nav-link" style="padding: 10px 20px;">Petit</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-6"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{%url 'petitefille'%}">Petite Fille</a>
+  </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{%url 'petitgarcons'%}">Petit Garcon</a>
+  </li></ul>
+  </div>
+  </li>
+  
+  {%if u%}
+  <li class="u-nav-item">
+    <a class="u-active-palette-1-base u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="{%url 'studentadd'%}" style="color: azure;padding: 10px 20px;">Admin University</a>
+  </li>
+  <li class="u-nav-item">
+    <a class="u-active-palette-1-base u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="{%url 'jeunneadd'%}" style="color: azure;padding: 10px 20px;">Admin Jeunes</a>
+  </li>
+  {%endif%}
+  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{%url 'logout'%}"  style="padding: 10px 20px;">Logout</a>
+  </li></ul>
+                </div>
+              </div>
+              <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+            </div>
+          </nav>
+        </div>
+      </header>
