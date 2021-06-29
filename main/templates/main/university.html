@@ -4,52 +4,39 @@
 
 
     {% block content%}
-    
-    <style>
-        .card{
-        height: 270px;
-        margin-top: 20px;
-        margin: 30px;
-        width: 100px;
-        box-shadow:  1px 1px 10px -3px #007bff;
-           }
-        .card:hover{
-        transform: scale(1.1);
-        }
-        .img{
-            width:100%;
-            height:50%;
-        }
-        .images{
-            width:100%;
-            height:100%;
-        }
-        .tag-link{
-            margin:auto;
-        }
-        
-       </style>
-    <div class="row">
-        
-        {% for item in ls %}
-        
-        <div class="col-sm-2 card">
-            <div class="img">
-           <img class="images"src="{{item.imageprofile.url}}" alt="" >
-        </div> 
-           <p class="text-center " style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
-            <span class="text-primary" style="font-family: 'Open Sans', sans-serif;font-weight:bold;">{{item.name}}</span><br>
-            
-                {{item.batch}} en <span class="text-warning">{{item.fillier}}</span></p>
-                <a  class='tag-link'href="{%url 'universitydetail' id=item.id%}"> <button class="btn btn-primary ">View detail</button></a>
-           </div>
-            
-       
-        {%endfor%}
+    <section class="u-align-center u-clearfix u-lightbox u-section-2" id="carousel_47e9">
+        <div class="u-clearfix u-sheet u-sheet-1">
+          <div class="u-expanded-width-sm u-expanded-width-xs u-layout-grid u-list u-list-1">
+            <div class="u-repeater u-repeater-1">
 
-    
-       </div>
-       <a href="{% url 'universitybages'%}">Show all Bages</a>
+                {% for item in ls %}
+              
+                <div class="u-align-center u-container-style u-list-item u-palette-1-light-2 u-radius-13 u-repeater-item u-shape-round u-list-item-2 bg-dark">
+                    <div class="u-container-layout u-similar-container u-container-layout-2">
+                      <div alt="" class="u-image u-image-circle u-image-2" data-image-width="1000" data-image-height="1500" style="background-image: url('{{item.imageprofile.url}}');"></div>
+                      <p class="u-text u-text-body-alt-color u-text-4">{{item.fillier}}</p>
+                      <h3 class="u-custom-font u-font-raleway u-text u-text-5" style="color: white;">{{item.name}}</h3>
+                      <p class="u-text u-text-6" style="color: white;">{{item.name}} est {{item.batch}} en {{item.fillier}} chez {{item.institution}} </p>
+                     <a  class='tag-link'href="{%url 'universitydetail' id=item.id%}"> <button class="btn btn-primary ">View detail</button></a>
+                    </div>
+                  </div>
+
+                  
+                
+
+               
+             
+
+              {%endfor%}
+
+              
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
    
+        <a href="{% url 'universitybages'%}">Show all Bages</a>
     {%endblock%}   
        
