@@ -4,168 +4,278 @@
 {% block title%} Home {%endblock%}
 {% block slide%}
 
-<div id="slideshow"> 
-    <div>
-      <img src="{% static 'images/img2.jpg' %}" width="100%" height="400px">
-    </div>
-    <div>
-      <img src="{% static 'images/img3.jpg' %}" width="100%" height="400px">
-    </div>
-    <div>
-        <img src="{% static 'images/img4.jpg' %}" width="100%" height="400px">
-      </div>
-      <div>
-        <img src="{% static 'images/img5.jpg' %}" width="100%" height="400px">
-      </div>
-      <div>
-        <img src="{% static 'images/img6.jpg' %}" width="100%" height="400px">
-      </div>
-  </div>
-  <script>
-    $("#slideshow > div:gt(0)").hide();
-
-setInterval(function() { 
-  $('#slideshow > div:first')
-  .fadeOut(1000)
-  .next()
-  .fadeIn(1000)
-  .end()
-  .appendTo('#slideshow');
-}, 2000);
-  </script>
-{%endblock%}
-
-{% block content%}
-<div class="row" style="margin-top: 20px;">
-<div class="col-sm-6">
-  <iframe width="100%" height="400" src="https://www.youtube.com/embed/ubTNdrDvfAY"
-  title="YouTube video player" frameborder="0"
-   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen></iframe>
-</div>
-<div class="col-sm-6">
-  <h4 class="text-center text-primary" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Centre Rassoul Akram (C.R.A) Students Description</h4>
- <p style="margin:30px;letter-spacing: 2px;">
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-   Autem iusto a dolorem porro harum optio praesentium ullam
-    atque totam amet earum ratione vero sint eaque,
-   minus at omnis. Obcaecati, voluptatem.
- </p>
-</div>
- 
-</div>
-<h4 class="text-center text-primary" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Students News</h4>
-<div class="abovemain">
-  <span id="left" class="card"><i class="fas fa-2x fa-arrow-left"></i></span>
-  <span id="right" class="card"><i class="fas  fa-2x  fa-arrow-right"></i></span>
-<div class="main">
-<div class="contain">
-  <div class="news card">
-<div class="image">
-  <img src="{% static 'images/img2.jpg' %}" alt="" width="100%" height="200px">
-</div>
-<h6 class="text-center " style="margin: 10px;">New Swimming pool</h6>
-<div class="text-dark" style="padding: 10px;">
-  There are many facilities offered to the Students in C.R.A but this time it's quite unique because 
-They have been given a swimming pool so that they can have fun and enjoy the beautiful views inside C.R.A
-</div>
-  </div>
-
-  <div class="news card">
-    <div class="image">
-      <img src="{% static 'images/img4.jpg' %}" alt="" width="100%" height="200px">
-    </div>
-    <h6 class="text-center " style="margin: 10px;">New Swimming pool</h6>
-    <div class="text-dark" style="padding: 10px;">
-      There are many facilities offered to the Students in C.R.A but this time it's quite unique because 
-    They have been given a swimming pool so that they can have fun and enjoy the beautiful views inside C.R.A
-    </div>
-      </div>
-
-      <div class="news card">
-        <div class="image">
-          <img src="{% static 'images/img3.jpg' %}" alt="" width="100%" height="200px">
+<section class="u-align-center u-clearfix u-section-1" id="carousel_a1d0">
+  <div class="u-carousel u-expanded-width u-gallery u-layout-carousel u-lightbox u-no-transition u-show-text-always u-gallery-1" id="carousel-c43e" data-interval="5000" data-u-ride="carousel">
+    <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
+      <li data-u-target="#carousel-c43e" data-u-slide-to="0" class="u-active u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+      <li data-u-target="#carousel-c43e" data-u-slide-to="1" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+      <li data-u-target="#carousel-c43e" data-u-slide-to="2" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+      <li data-u-target="#carousel-c43e" data-u-slide-to="3" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+      <li data-u-target="#carousel-c43e" data-u-slide-to="4" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+    </ol>
+    <div class="u-carousel-inner u-gallery-inner" role="listbox">
+      <div class="u-active u-carousel-item u-gallery-item u-carousel-item-1">
+        <div class="u-back-slide u-back-slide-1" data-image-width="1600" data-image-height="1067">
+          <img src="static/images/GE-min.jpg" alt="" data-image-width="2000" data-image-height="1333" class="u-back-image u-expanded">
         </div>
-        <h6 class="text-center " style="margin: 10px;">New Swimming pool</h6>
-        <div class="text-dark" style="padding: 10px;">
-          There are many facilities offered to the Students in C.R.A but this time it's quite unique because 
-        They have been given a swimming pool so that they can have fun and enjoy the beautiful views inside C.R.A
+        <div class="u-over-slide u-over-slide-1">
+          <h3 class="u-gallery-heading">University</h3>
+          <p class="u-gallery-text">number of university</p>
         </div>
+      </div>
+      <div class="u-carousel-item u-gallery-item u-carousel-item-2">
+        <div class="u-back-slide" data-image-width="1280" data-image-height="865">
+          <img class="u-back-image u-expanded" src="https://pixabay.com/get/g53eecc4723244012d1f33f4a23e0fa8374834dd16160c4b4e9f2808301a3fd9afef09b9fa90beee06a74ee1316f8aab502d318875cb3d5fc3146e8f433f42cde_1280.jpg">
+        </div>
+        <div class="u-over-slide u-over-slide-2">
+          <h3 class="u-gallery-heading">Jeune Garcons</h3>
+          <p class="u-gallery-text">Number of jeune</p>
+        </div>
+      </div>
+      <div class="u-carousel-item u-gallery-item u-carousel-item-3" data-image-width="1280" data-image-height="851">
+        <div class="u-back-slide u-back-slide-3">
+          <img class="u-back-image u-expanded" src="https://pixabay.com/get/gc971c90bf2f00af6e27e85f212c245affea4e755e271f86fd56821b968d750d7ed70ab8a5ef1bb6349499780ec20a37787bfebe573b70d5312e6956ee976c702_1280.jpg" alt="Jeune Fille">
+        </div>
+        <div class="u-over-slide u-over-slide-3">
+          <h3 class="u-gallery-heading">Jeune Fille</h3>
+          <p class="u-gallery-text">Number of them</p>
+        </div>
+        <style data-mode="XL"></style>
+        <style data-mode="LG"></style>
+        <style data-mode="MD"></style>
+        <style data-mode="SM"></style>
+        <style data-mode="XS"></style>
+      </div>
+      <div class="u-carousel-item u-gallery-item u-carousel-item-4" data-image-width="1280" data-image-height="853">
+        <div class="u-back-slide u-back-slide-4">
+          <img class="u-back-image u-expanded" src="https://pixabay.com/get/g2e79218d8fd3c1fc1d96c1b22cf6ff6fa310aea911efd8b697e23af819154be3475509e306337b4570f7bb058846624df034bf51f846d2fb6fc5ee2b650e182f_1280.jpg" alt="Petite fille">
+        </div>
+        <div class="u-over-slide u-over-slide-4">
+          <h3 class="u-gallery-heading">Petite fille</h3>
+          <p class="u-gallery-text">23</p>
+        </div>
+        <style data-mode="XL"></style>
+        <style data-mode="LG"></style>
+        <style data-mode="MD"></style>
+        <style data-mode="SM"></style>
+        <style data-mode="XS"></style>
+      </div>
+      <div class="u-carousel-item u-gallery-item u-carousel-item-5" data-image-width="1280" data-image-height="853">
+        <div class="u-back-slide u-back-slide-5">
+          <img class="u-back-image u-expanded" src="https://pixabay.com/get/gb68180aaf8edb14acb9f43a6f96a515f09e421ffd75eb519d967dac326e027a60ffe599b828b5812d0b83cc8ac392c5f2c11f9a985b7510beb031fdc426a4c66_1280.jpg" alt="Petit Garcon">
+        </div>
+        <div class="u-over-slide u-over-slide-5">
+          <h3 class="u-gallery-heading">Petit Garcon</h3>
+          <p class="u-gallery-text">34</p>
+        </div>
+        <style data-mode="XL"></style>
+        <style data-mode="LG"></style>
+        <style data-mode="MD"></style>
+        <style data-mode="SM"></style>
+        <style data-mode="XS"></style>
+      </div>
+    </div>
+    <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-icon-circle u-opacity u-opacity-70 u-text-palette-1-base u-carousel-control-1" href="#carousel-c43e" role="button" data-u-slide="prev">
+      <span aria-hidden="true">
+        <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+      </span>
+      <span class="sr-only">
+        <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+      </span>
+    </a>
+    <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-icon-circle u-opacity u-opacity-70 u-text-palette-1-base u-carousel-control-2" href="#carousel-c43e" role="button" data-u-slide="next">
+      <span aria-hidden="true">
+        <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+      </span>
+      <span class="sr-only">
+        <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+      </span>
+    </a>
+  </div>
+  <div class="u-clearfix u-gutter-0 u-layout-wrap u-layout-wrap-1" style="margin: 37px;">
+    <div class="u-layout" style="">
+      <div class="u-layout-row" style="">
+        <div class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-shading u-size-30 u-size-xs-60 u-image-1" src="" data-image-width="1280" data-image-height="853" style="background-image: url('static/images/36dcfe8082201cbed132c8cf23fc09c5a3d4a636a21e93c5cbc2d5ebe261c6a4357548d34c66836b790bf25b3cecc066ee778794545574dfa23d17_1280.jpg');">
+          <div class="u-container-layout u-valign-middle u-container-layout-1" src="">
+            <h2 class="u-text u-text-1">Sample Headline</h2>
+            <p class="u-text u-text-2">Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
+            <a href="#" class="u-btn u-button-style u-palette-1-base u-btn-1">Button</a>
           </div>
+        </div>
+        <div class="u-align-left u-container-style u-grey-5 u-layout-cell u-right-cell u-size-30 u-size-xs-60 u-layout-cell-2">
+          <div class="u-container-layout u-valign-middle u-container-layout-2">
+            <h2 class="u-text u-text-3">Sample Headline</h2>
+            <p class="u-text u-text-4">Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
+            <a href="#" class="u-btn u-button-style u-palette-1-base u-btn-2">Button</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <div class="news card">
-            <div class="image">
-              <img src="{% static 'images/img3.jpg' %}" alt="" width="100%" height="200px">
-            </div>
-            <h6 class="text-center " style="margin: 10px;">New Swimming pool</h6>
-            <div class="text-dark" style="padding: 10px;">
-              There are many facilities offered to the Students in C.R.A but this time it's quite unique because 
-            They have been given a swimming pool so that they can have fun and enjoy the beautiful views inside C.R.A
-            </div>
-              </div>
 
-              
-</div>
-</div>
-</div>
+<section class="u-align-center u-clearfix u-section-2" id="sec-53a6">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <h5 class="u-text u-text-1">About</h5>
+    <h1 class="u-text u-text-2" style="margin: 5px auto 10px;">CRA STUDENTS</h1>
+    <p class="u-text u-text-3" style="margin: 5px auto 10px;">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of
+            disruptive innovation.</p>
+  </div>
+</section>
+<section class="u-align-center u-clearfix u-section-3" id="sec-916b">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <h2 class="u-text u-text-1">RESPONSABLE</h2>
+    <div class="u-layout-horizontal u-list u-list-1">
+      <div class="u-repeater u-repeater-1">
+        <div class="u-align-left u-container-style u-list-item u-repeater-item">
+          <div class="u-container-layout u-similar-container u-container-layout-1">
+            <img class="u-expanded-width u-image u-image-default u-image-1" alt="" data-image-width="2836" data-image-height="1875" src="static/images/3.jpeg">
+            <h4 class="u-text u-text-2">Sample Headline</h4>
+            <p class="u-text u-text-3">Sample text. Click to select the text box.  or double click to start editing the text.</p>
+          </div>
+        </div>
+        <div class="u-align-left u-container-style u-list-item u-repeater-item">
+          <div class="u-container-layout u-similar-container u-container-layout-2">
+            <img class="u-expanded-width u-image u-image-default u-image-2" alt="" data-image-width="2836" data-image-height="1875" src="static/images/4.svg">
+            <h4 class="u-text u-text-4">Sample Headline</h4>
+            <p class="u-text u-text-5">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+          </div>
+        </div>
 
-<script>
-  var n=0
-  var k=(document.getElementsByClassName("news").length*40)
-   
-  var interval=setInterval(function(){
-    var c=document.getElementsByClassName("news")
-   for(var i=0;i<c.length;i++){
-     n=n+10
-  c[i].style.transform="translateX("+-n+"px)"
-   }
-   if(n>k){
-    annul_animmation(interval)
+        <div class="u-align-left u-container-style u-list-item u-repeater-item">
+          <div class="u-container-layout u-similar-container u-container-layout-3">
+            <img class="u-expanded-width u-image u-image-default u-image-3" alt="" data-image-width="2836" data-image-height="1875" src="static/images/4.svg">
+            <h4 class="u-text u-text-6">Sample Headline</h4>
+            <p class="u-text u-text-7">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+          </div>
+        </div>
 
-   }
-   check(n)
-  },2000)
-  function annul_animmation(int){
-    clearInterval(int);
-}
+        <div class="u-align-left u-container-style u-list-item u-repeater-item">
+          <div class="u-container-layout u-similar-container u-container-layout-3">
+            <img class="u-expanded-width u-image u-image-default u-image-3" alt="" data-image-width="2836" data-image-height="1875" src="static/images/4.svg">
+            <h4 class="u-text u-text-6">Sample Headline</h4>
+            <p class="u-text u-text-7">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+          </div>
+        </div>
 
-  $('#left').click(function(){
-    n=n+100
-    animation(n);
-    annul_animmation(interval)
-    console.log(n)
-   
-  })
-  $('#right').click(function(){
-    n=n-100
-    animation(n);
-    annul_animmation(interval)
-    console.log(n)
+        
+
+
+      </div>
+
+
     
-    
-  })
-  function animation(n){
-    var c=document.getElementsByClassName("news")
-   for(var i=0;i<c.length;i++){
-  c[i].style.transform="translateX("+-n+"px)"
-  check(n)
-   }
-  }
+      
+      <a class="u-absolute-vcenter u-gallery-nav u-gallery-nav-prev u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-gallery-nav-1" href="#" role="button">
+        <span aria-hidden="true">
+          <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+        </span>
+        <span class="sr-only">
+          <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+        </span>
+      </a>
+      <a class="u-absolute-vcenter u-gallery-nav u-gallery-nav-next u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-gallery-nav-2" href="#" role="button">
+        <span aria-hidden="true">
+          <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+        </span>
+        <span class="sr-only">
+          <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
 
-  function check(n){
-    if(n<=0){
-      document.getElementById('right').style.display="none"
-    }else{
-      document.getElementById('right').style.display="block"
-    }
 
-    if(n>=k){
-      document.getElementById('left').style.display="none"
-    }else{
-      document.getElementById('left').style.display="block"
-    }
-
-  }
-</script>
-
+<footer class="u-align-center-sm u-align-center-xs u-clearfix u-footer u-grey-80" id="sec-7f5f"><div class="u-clearfix u-sheet u-valign-middle-sm u-valign-middle-xl u-valign-middle-xs u-sheet-1">
+    <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="80" data-image-height="40">
+      <img src="static/images/default-logo.png" class="u-logo-image u-logo-image-1" data-image-width="80">
+    </a>
+    <div class="u-clearfix u-expanded-width u-gutter-30 u-layout-wrap u-layout-wrap-1">
+      <div class="u-gutter-0 u-layout">
+        <div class="u-layout-row">
+          <div class="u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-md u-align-left-xl u-container-style u-layout-cell u-left-cell u-size-15 u-size-30-md u-layout-cell-1">
+            <div class="u-container-layout u-valign-top u-container-layout-1"><!--position-->
+              <div data-position="" class="u-position u-position-1"><!--block-->
+                <div class="u-block">
+                  <div class="u-block-container u-clearfix"><!--block_header-->
+                    <h5 class="u-block-header u-text"><!--block_header_content--> Block header <!--/block_header_content--></h5><!--/block_header--><!--block_content-->
+                    <div class="u-block-content u-text"><!--block_content_content--> Block content. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices. <!--/block_content_content--></div><!--/block_content-->
+                  </div>
+                </div><!--/block-->
+              </div><!--/position-->
+            </div>
+          </div>
+          <div class="u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-md u-align-left-xl u-container-style u-layout-cell u-size-15 u-size-30-md u-layout-cell-2">
+            <div class="u-container-layout u-valign-top u-container-layout-2"><!--position-->
+              <div data-position="" class="u-position u-position-2"><!--block-->
+                <div class="u-block">
+                  <div class="u-block-container u-clearfix"><!--block_header-->
+                    <h5 class="u-block-header u-text"><!--block_header_content--> Block header <!--/block_header_content--></h5><!--/block_header--><!--block_content-->
+                    <div class="u-block-content u-text"><!--block_content_content--> Block content. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices. <!--/block_content_content--></div><!--/block_content-->
+                  </div>
+                </div><!--/block-->
+              </div><!--/position-->
+            </div>
+          </div>
+          <div class="u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-md u-align-left-xl u-container-style u-layout-cell u-size-15 u-size-30-md u-layout-cell-3">
+            <div class="u-container-layout u-valign-top u-container-layout-3"><!--position-->
+              <div data-position="" class="u-position u-position-3"><!--block-->
+                <div class="u-block">
+                  <div class="u-block-container u-clearfix"><!--block_header-->
+                    <h5 class="u-block-header u-text"><!--block_header_content--> Block header <!--/block_header_content--></h5><!--/block_header--><!--block_content-->
+                    <div class="u-block-content u-text"><!--block_content_content--> Block content. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices. <!--/block_content_content--></div><!--/block_content-->
+                  </div>
+                </div><!--/block-->
+              </div><!--/position-->
+            </div>
+          </div>
+          <div class="u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-md u-align-left-xl u-container-style u-layout-cell u-right-cell u-size-15 u-size-30-md u-layout-cell-4">
+            <div class="u-container-layout u-valign-top u-container-layout-4"><!--position-->
+              <div data-position="" class="u-position u-position-4"><!--block-->
+                <div class="u-block">
+                  <div class="u-block-container u-clearfix"><!--block_header-->
+                    <h5 class="u-block-header u-text"><!--block_header_content--> Block header <!--/block_header_content--></h5><!--/block_header--><!--block_content-->
+                    <div class="u-block-content u-text"><!--block_content_content--> Block content. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices. <!--/block_content_content--></div><!--/block_content-->
+                  </div>
+                </div><!--/block-->
+              </div><!--/position-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="u-social-icons u-spacing-20 u-social-icons-1">
+      <a class="u-social-url" title="" target="_blank" href=""><span class="u-icon u-icon-circle u-social- u-social-icon"></span>
+      </a>
+    </div>
+  </div></footer>
+<section class="u-backlink u-clearfix u-grey-80">
+  <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
+    <span>Website Templates</span>
+  </a>
+  <p class="u-text">
+    <span>created with</span>
+  </p>
+  <a class="u-link" href="https://nicepage.com/" target="_blank">
+    <span>Website Builder Software</span>
+  </a>. 
+</section>
 {%endblock%}
