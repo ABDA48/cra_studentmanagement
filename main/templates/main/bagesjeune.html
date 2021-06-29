@@ -1,64 +1,23 @@
-{% extends 'main/base.html'%}
-{% load static  %}
-{% block title%} University  {%endblock%}
-
-
-    {% block content%}
-    <style>
-        .card{
-        height: 490x;
-        margin-top: 20px;
-        margin: 30px;
-        width: 200px;
-        box-shadow:  1px 1px 10px -3px #007bff;
-        position: relative;
-           }
-        .card:hover{
-        transform: scale(1.1);
-        }
-        .img{
-            width:100%;
-            height:300px;
-        }
-        .qrcode{
-            width: 90%;
-    height: 134px;
-    top: 162px;
-    position: absolute;
-        }
-        .images{
-            width:100%;
-            height:100%;
-        }
-        .tag-link{
-            margin:auto;
-        }
-        
-       </style>
-    <div class="row">
-        
+<!DOCTYPE html>
+<html lang="en">
+    {% load static  %}   
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bages</title>
+    <link rel="stylesheet" href="{%static 'css/bage.css'%}">
+</head>
+<body>
+    <div class="container">
         {% for item,item2 in mylist %}
-        
-        <div class="col-sm-3 card">
-            
-            <div class="img">
-           <img class="images"src="{{item.imageprofile.url}}" alt="" >
-        </div> 
-        <div>
-           <p class="text-center " style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
-            <span class="text-primary" style="font-family: 'Open Sans', sans-serif;font-weight:bold;">{{item.name}}</span><br>
-            
-                {{item.batch}} en <span class="text-warning">{{item.fillier}}</span><br>
-               
-            </p>
+        <div class="contenu">
+<div class="image" style="background-image: url('{{item.imageprofile.url}}');"></div>
+<div class="text-center university">{{item.batch}}</div>
+<div class="text-center name">{{item.name}}</div>
+<div class="image qrcode" style="background-image: url('{{item2}}');" alt='{{root}}+"/university/"+{{item.id}}+"/resume"'></div>
         </div>
-        <div class="images">
-            <img class="qrcode" src="{{item2}}" alt='{{root}}+/jeunedetail/{{item.id}}/resume'>
-        </div>
-                 
-           </div>
         {%endfor%}
-
-    
-       </div>
-       {%endblock%}  
+    </div>
+</body>
+</html>
